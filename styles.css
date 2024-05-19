@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+*{  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* theme colors */
+:root
+{
+    --brown: #6F4E37;
+    --white: #fff;
+    --grey: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+}
+
+body
+{
+    min-height: 100vh;
+    overflow-x: hidden;       
+}
+
+.container
+{
+    position: relative;
+    width: 100%;
+}
+
+/* bar kiri*/ 
+
+.navigation  /* navgitaon bar starts here*/
+{
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--brown);
+    border-left: 10px solid var(--brown);
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.navigation.active
+{
+    width: 80px;
+}
+
+.navigation ul /* navigation ul */
+{
+   position: center;
+   top: 0;
+   left: 0;
+   width: 100%
+
+} 
+
+.navigation ul li    /* navigation list  */
+{
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered      /* event pointer */
+{
+    background: var(--white);
+}
+
+.navigation ul li:nth-child(1)   /* jarak list maven roasters */
+{
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+
+.navigation ul li a /* icon position */
+{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.navigation ul li:hover a,
+.navigation ul li.hovered a /* pointer hover color */
+{
+ color :var(--brown)
+}
+.navigation ul li a .icon  /* icon align with title*/
+{   
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 77px; 
+    text-align: center;   
+}
+
+.navigation ul li a .icon ion-icon   /* icon font size */
+{
+    font-size: 1.75em;
+}
+
+.navigation ul li a .title  /* title style */
+{
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+.navigation ul li:hover a::before ,
+.navigation ul li.hovered a::before  /* curver outside */
+{
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow:  35px 35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+.navigation ul li:hover a::after ,
+.navigation ul li.hovered a::after  /* curver outside */
+{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow:  35px -35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+/* main starts here */
+
+.main    
+{
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: var(--white);
+    transition: 0.5s;
+}    
+
+.main.active
+{
+    width: calc(100% - 80px);
+    left: 80px;
+}
+
+.topbar
+{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+/* toggle (strip tiga) bar starts here */
+
+.toggle
+{
+    position: relative;
+    top: 0;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    cursor: pointer
+}
+
+/* seach bar starts here */
+
+.search 
+{
+    position: relative;
+    width: 400px;
+    margin: 0 10px;
+}
+
+.search label
+{
+    position: relative;
+    width: 100% ;
+}
+
+.search label input
+{
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid var(--black2);
+}
+
+.search label ion-icon
+{
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 1.2em;
+}
+
+/* user starts here */
+
+.user
+{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.user img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* cardBox starts here */
+
+.cardBox
+{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-areas:                  /*grid-template-columns: repeat(3,1fr); */
+    'card-1 card-2 card-3'                              
+    'chart chart chart';
+    grid-gap: 40px;
+    align-items: center;
+}
+
+#card-1
+{
+    grid-area: card-1;
+}
+
+#card-2
+{
+    grid-area: card-2;
+}
+
+#card-3
+{
+    grid-area: card-3;
+}
+
+.cardBox .card
+{
+    position: relative;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+}
+
+.cardBox .card .numbers
+{
+    padding: relative;
+    font-weight: 500;
+    font-size: 2.5em;
+    color: var(--brown);
+}
+
+.cardBox .card .cardName
+{
+    color: var(--black2);
+    font-size: 1.1em;
+    margin-top: 5px; 
+}
+
+.cardBox .card .iconBx
+{
+    font-size: 3.5em;
+    color: var(--black2);
+}
+
+/* cardBox ends here */
+
+
+/* chart starts here */
+.charts
+{
+    display: grid;
+    grid-template-areas:
+    'col-1 col-2 col-3 col-3'
+    'col-4 col-5 col-3 col-3'
+    'col-4 col-5 col-6 col-7';
+    grid-gap: 10px;
+    grid-area: chart;
+}
+
+.charts #col-1        /* chart grid */
+{
+    grid-area: col-1;
+}
+
+.charts #col-2
+{
+    grid-area: col-2;
+}
+
+.charts #col-3
+{
+    grid-area: col-3;
+}
+.charts #col-4
+{
+    grid-area: col-4;
+}
+
+.charts #col-5
+{
+    grid-area: col-5;
+}
+
+.charts #col-6
+{
+    grid-area: col-6;
+}
+
+.charts #col-7
+{
+    grid-area: col-7;
+}
+
+.charts .chart-a
+{
+    box-shadow: 0 0 3px black;
+    border-radius: 10px;
+}
