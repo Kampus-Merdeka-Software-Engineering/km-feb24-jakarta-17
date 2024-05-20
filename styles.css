@@ -260,6 +260,7 @@ body
     'card-1 card-2 card-3'                              
     'chart chart chart';
     grid-gap: 40px;
+    text-align: center;
     align-items: center;
     
 }
@@ -340,11 +341,13 @@ body
     'col-4 col-5 col-6 col-7';
     grid-gap: 10px;
     grid-area: chart;
+    
 }
 
 .charts #col-1        /* chart grid */
 {
     grid-area: col-1;
+    
 }
 
 .charts #col-2
@@ -374,10 +377,47 @@ body
 .charts #col-7
 {
     grid-area: col-7;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .charts .chart-a
 {
     box-shadow: 0 0 3px black;
     border-radius: 10px;
+}
+
+
+.selector
+{
+    display: grid;
+    grid-template-areas:
+    'selector-1 selector-2 selector-3 selector-4 selector-5';
+    grid-gap: 10px;
+    grid-area: selector;
+}
+
+
+.selector #selector-1   /* selector grid starts here */
+{
+    grid-area: selector-1;
+}
+
+.selector #selector-2
+{
+    grid-area: selector-2;
+}
+
+.selector #selector-3
+{
+    grid-area: selector-3;
+}
+
+.selector #selector-4
+{
+    grid-area: selector-4;
+}
+
+.selector #selector-5
+{
+    grid-area: selector-5;
 }

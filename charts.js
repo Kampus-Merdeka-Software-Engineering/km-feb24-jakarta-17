@@ -50,7 +50,27 @@ const transaction_by_each_day = createChart(
       ],
     },
   ],
-  {},
+  {
+    plugins: {
+      maintainAspectRatio: false,
+      layout: {
+        padding: {
+          left: 10,
+          right: 10,
+          top: 10,
+          bottom: 10,
+        },
+        legend: {
+          labels: {
+            font: {
+              size: 16,
+              family: "Ubuntu",
+            },
+          },
+        },
+      },
+    },
+  },
   "transaction-by-day-Chart",
   "bar"
 );
@@ -75,7 +95,18 @@ const transaction_by_hour_chart = createChart(
       backgroundColor: ["#2832c2", "#2832c2", "#2832c2"],
     },
   ],
-  {},
+  {
+    plugins: {
+      legend: {
+        labels: {
+          font: {
+            size: 16,
+            family: "Ubuntu",
+          },
+        },
+      },
+    },
+  },
   "transaction-by-hour-chart", //sesuai di canvas html:
   "line"
 );
@@ -121,7 +152,18 @@ const transaction_by_month_chart = createChart(
       ],
     },
   ],
-  {},
+  {
+    plugins: {
+      legend: {
+        labels: {
+          font: {
+            size: 16,
+            family: "Ubuntu",
+          },
+        },
+      },
+    },
+  },
   "transaction-by-month-chart", //sesuai di canvas html:
   "line"
 );
@@ -146,7 +188,18 @@ const store_location_revenue_chart = createChart(
       backgroundColor: ["black"],
     },
   ],
-  {},
+  {
+    plugins: {
+      legend: {
+        labels: {
+          font: {
+            size: 16,
+            family: "Ubuntu",
+          },
+        },
+      },
+    },
+  },
   "store-location-revenue-chart",
   "bar"
 );
@@ -168,8 +221,7 @@ const Product_Transaction_by_Store_chart = createChart(
     {
       label: "Lower Manhattan", // 3 label buat bar chartnya: // ini juga sebagai legend:
       data: [651, 200, 300, 100], // array index sesuai dengan jumlah data di labels:
-      backgroundColor: [
-        "#F1DEC9", ],
+      backgroundColor: ["#F1DEC9"],
     },
     {
       label: "Astoria",
@@ -197,6 +249,16 @@ const Product_Transaction_by_Store_chart = createChart(
         stacked: true,
       },
     },
+    plugins: {
+      legend: {
+        labels: {
+          font: {
+            size: 16,
+            family: "Ubuntu",
+          },
+        },
+      },
+    },
   },
   "Product-Transaction-by-Store-chart",
   "bar"
@@ -212,7 +274,18 @@ const Revenue_by_Weekday_Weekend_chart = createChart(
       backgroundColor: ["blue", "skyblue"],
     },
   ],
-  {},
+  {
+    plugins: {
+      legend: {
+        labels: {
+          font: {
+            size: 16,
+            family: "Ubuntu",
+          },
+        },
+      },
+    },
+  },
   "Revenue-by-Weekday/Weekend-chart",
   "pie"
 );

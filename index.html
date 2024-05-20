@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coffee Shop Dashboard</title>
+    <title>Maven Roasters Dashboard</title>
+    <link rel="icon" href="images/coffee-beans.png">
     <link rel="stylesheet" type="text/css" href="./styles.css" />
   </head>
   <body>
@@ -145,9 +146,37 @@
             <h2>Revenue by Weekday / Weekend</h2>
             <canvas id="Revenue-by-Weekday/Weekend-chart"></canvas>
           </div>
-          <div class="chart-a" id="col-7">
-            <h2>Transactions by Week</h2>
-            <canvas id="Transactions-by-Week"></canvas>
+          <div class="chart-a" id="col-7">          <!-- ini table di dalamnya grid chart -->
+            <h2>Quantity of Items Sold</h2>
+            <table>
+              <table>
+                <thead>
+                    <tr>
+                        <th>Store</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Astoria</td>
+                        <td>70991</td>
+                    </tr>
+                    <tr>
+                        <td>Hell's Kitchen</td>
+                        <td>71737</td>
+                    </tr>
+                    <tr>
+                        <td>Lower Manhattan</td>
+                        <td>71742</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Total</td>
+                        <td>214470</td>
+                    </tr>
+                </tfoot>
+            </table>
           </div>
         </div>
 
@@ -157,7 +186,7 @@
       </div>
       <div class="selector">
         <div class="bottom-selector">
-          <div class="month">
+          <div class="month" id="selector-1">
             <!--month selector-->
             <h3>Month Selector</h3>
             <label><input type="checkbox" value="January" checked />Jan </label>
@@ -173,8 +202,9 @@
             <label><input type="checkbox" value="May" checked /> May </label>
             <label><input type="checkbox" value="June" checked /> June </label>
           </div>
+        </div>
 
-          <div class="store">
+          <div class="store" id="selector-2">
             <!--store selector-->
             <h3>Store Location</h3>
             <label
@@ -187,14 +217,15 @@
             <label
               ><input type="checkbox" value="Lower Manhattan" checked />Lower
               Manhattan
-            </label>
+          </label>
+          </div>
 
-            <div class="hours">
+            <div class="hours" id="selector-3">
               <!-- hours selector (still progress) -->
               <h3>Hours</h3>
             </div>
 
-            <div class="product-category">
+            <div class="product-category" id="selector-4">
               <!-- product-category selector -->
               <h3>Product Category</h3>
               <label for="product-category"> </label>
@@ -208,7 +239,7 @@
             </div>
 
             <!-- clear button -->
-            <div class="clear">
+            <div class="clear" id="selector-5">
               <h3>Clear</h3>
               <ion-icon name="trash-outline"></ion-icon>
             </div>
