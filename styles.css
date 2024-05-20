@@ -261,21 +261,37 @@ body
     'chart chart chart';
     grid-gap: 40px;
     align-items: center;
+    
 }
 
 #card-1
 {
     grid-area: card-1;
+    border: 1px solid #ccc;
+    border-radius: transparent;
+    background-color: #543310; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 #card-2
 {
     grid-area: card-2;
+    border: 1px solid #ccc;
+    border-radius: transparent;
+    background-color: #74512D; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 #card-3
 {
     grid-area: card-3;
+    border: 1px solid #ccc;
+    border-radius: transparent;
+    background-color: #AF8F6F; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .cardBox .card
@@ -295,12 +311,12 @@ body
     padding: relative;
     font-weight: 500;
     font-size: 2.5em;
-    color: var(--brown);
+    color: var(--white);
 }
 
 .cardBox .card .cardName
 {
-    color: var(--black2);
+    color: var(--white);
     font-size: 1.1em;
     margin-top: 5px; 
 }
@@ -308,7 +324,7 @@ body
 .cardBox .card .iconBx
 {
     font-size: 3.5em;
-    color: var(--black2);
+    color: var(--white);
 }
 
 /* cardBox ends here */
