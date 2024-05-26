@@ -17,6 +17,7 @@
     --black2: #999;
 }
 
+
 body
 {
     min-height: 100vh;
@@ -273,6 +274,7 @@ body
     background-color: #543310; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    
 }
 
 #card-2
@@ -299,7 +301,7 @@ body
 {
     position: relative;
     background: var(--white);
-    padding: 30px;
+    padding: 25px;
     border-radius: 20px;
     display: flex;
     justify-content: space-between;
@@ -377,14 +379,16 @@ body
 .charts #col-7
 {
     grid-area: col-7;
-    font-family: 'Ubuntu', sans-serif;
 }
 
 .charts .chart-a
 {
     box-shadow: 0 0 3px black;
     border-radius: 10px;
+    width: 100%;
+    height: auto;
 }
+
 
 
 .selector
@@ -420,4 +424,21 @@ body
 .selector #selector-5
 {
     grid-area: selector-5;
+}
+
+#col-7 table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+#col-7 th,
+#col-7 td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.Table   
+{
+    margin: 60px 10px;
 }

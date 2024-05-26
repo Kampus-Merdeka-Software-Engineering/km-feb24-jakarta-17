@@ -20,7 +20,7 @@ const transaction_by_each_day = createChart(
   [
     {
       label: "Lower Manhattan", // 3 label buat bar chartnya: // ini juga sebagai legend:
-      data: [7403000, 7032000, 7370000, 7427000, 7325000, 6942000, 7073000], // array index sesuai dengan jumlah data di labels:
+      data: [740300, 703200, 737000, 742700, 732500, 694200, 707300], // array index sesuai dengan jumlah data di labels:
       backgroundColor: [
         "darkgrey",
         "darkgrey",
@@ -33,12 +33,12 @@ const transaction_by_each_day = createChart(
     },
     {
       label: "Astoria",
-      data: [7104000, 7472000, 7173000, 7307000, 7489000, 6846000, 7344000],
+      data: [710400, 747200, 717300, 730700, 748900, 684600, 734400],
       backgroundColor: ["grey", "grey", "grey", "grey", "grey", "grey", "grey"],
     },
     {
       label: "Hell's Kitchen",
-      data: [7136000, 6696000, 6767000, 6920000, 6860000, 6722000, 6679000],
+      data: [713600, 669600, 676700, 692000, 686000, 672200, 667900],
       backgroundColor: [
         "black",
         "black",
@@ -52,20 +52,11 @@ const transaction_by_each_day = createChart(
   ],
   {
     plugins: {
-      maintainAspectRatio: false,
-      layout: {
-        padding: {
-          left: 10,
-          right: 10,
-          top: 10,
-          bottom: 10,
-        },
-        legend: {
-          labels: {
-            font: {
-              size: 16,
-              family: "Ubuntu",
-            },
+      legend: {
+        labels: {
+          font: {
+            size: 16,
+            family: "Ubuntu",
           },
         },
       },
@@ -117,7 +108,7 @@ const transaction_by_month_chart = createChart(
   [
     {
       label: "Lower Manhattan",
-      data: [651, 590, 800, 810, 560, 550],
+      data: [65100, 12034, 8000, 7900, 56000, 55000],
       backgroundColor: [
         "#63c5da",
         "#63c5da",
@@ -129,7 +120,7 @@ const transaction_by_month_chart = createChart(
     },
     {
       label: "Astoria",
-      data: [651, 590, 800, 810, 560, 550],
+      data: [61100, 23214, 8000, 81000, 56000, 55000],
       backgroundColor: [
         "#0492c2",
         "#0492c2",
@@ -141,7 +132,7 @@ const transaction_by_month_chart = createChart(
     },
     {
       label: "Hell's Kitchen",
-      data: [651, 590, 800, 810, 560, 550],
+      data: [69000, 59000, 8900, 81000, 56000, 55000],
       backgroundColor: [
         "#2832c2",
         "#2832c2",
@@ -152,7 +143,15 @@ const transaction_by_month_chart = createChart(
       ],
     },
   ],
-  {
+  {maintainAspectRatio: false,responsive: false,
+    /* scales: {
+      y: {
+        autoSkip: true,
+        ticks: {
+          maxTicksLimit: 10, // Set the maximum number of ticks on the y-axis
+        },
+      },
+    },
     plugins: {
       legend: {
         labels: {
@@ -162,7 +161,7 @@ const transaction_by_month_chart = createChart(
           },
         },
       },
-    },
+    } */
   },
   "transaction-by-month-chart", //sesuai di canvas html:
   "line"
@@ -216,26 +215,27 @@ const Product_Transaction_by_Store_chart = createChart(
     "Branded",
     "Loose Tea",
     "Packaged Chocolate",
+    " ",
   ], // array x:
   [
     {
       label: "Lower Manhattan", // 3 label buat bar chartnya: // ini juga sebagai legend:
-      data: [651, 200, 300, 100], // array index sesuai dengan jumlah data di labels:
+      data: [651, 200, 300, 100, 100, 100, 100, 100], // array index sesuai dengan jumlah data di labels:
       backgroundColor: ["#F1DEC9"],
     },
     {
       label: "Astoria",
-      data: [651, 200, 300, 100],
+      data: [651, 200, 300, 100, 100, 100, 100, 100],
       backgroundColor: ["#6AC8B6"],
     },
     {
       label: "Hell's Kitchen",
-      data: [651, 200, 300, 100],
+      data: [651, 200, 300, 100, 100, 100, 100, 100],
       backgroundColor: ["#A4907C"],
     },
     {
       label: "Total Penjualan",
-      data: [651, 200, 300, 100],
+      data: [651, 200, 300, 100, 100, 100, 100, 100],
       backgroundColor: ["#8D7B68"],
     },
   ],
@@ -250,6 +250,7 @@ const Product_Transaction_by_Store_chart = createChart(
       },
     },
     plugins: {
+      resnponsive: true,
       legend: {
         labels: {
           font: {
@@ -289,3 +290,8 @@ const Revenue_by_Weekday_Weekend_chart = createChart(
   "Revenue-by-Weekday/Weekend-chart",
   "pie"
 );
+
+	
+ let table = new DataTable('#myTable');
+
+console.log(window)

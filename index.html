@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maven Roasters Dashboard</title>
-    <link rel="icon" href="images/coffee-beans.png">
+    <title>Coffee Shop Dashboard</title>
     <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css" type="text/css"/>
+
   </head>
   <body>
     <div class="container">
@@ -79,7 +80,7 @@
         </div>
         <!-- userImg -->
         <div class="user">
-          <img src="/images/dummy_user.jpg" />
+          <img src="/Pratice Project 3/images/dummy_user.jpg" />
         </div>
       </div>
 
@@ -146,104 +147,107 @@
             <h2>Revenue by Weekday / Weekend</h2>
             <canvas id="Revenue-by-Weekday/Weekend-chart"></canvas>
           </div>
-          <div class="chart-a" id="col-7">          <!-- ini table di dalamnya grid chart -->
-            <h2>Quantity of Items Sold</h2>
+          <div class="chart-a" id="col-7">
+            <h2>Sold Quantity</h2>
             <table>
-              <table>
-                <thead>
-                    <tr>
-                        <th>Store</th>
-                        <th>Quantity</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Astoria</td>
-                        <td>70991</td>
-                    </tr>
-                    <tr>
-                        <td>Hell's Kitchen</td>
-                        <td>71737</td>
-                    </tr>
-                    <tr>
-                        <td>Lower Manhattan</td>
-                        <td>71742</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td>Total</td>
-                        <td>214470</td>
-                    </tr>
-                </tfoot>
+              <thead>
+                <tr>
+                  <th>Store</th>
+                  <th>Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Astoria</td>
+                  <td>70991</td>
+                </tr>
+                <tr>
+                  <td>Hell's Kitchen</td>
+                  <td>71737</td>
+                </tr>
+                <tr>
+                  <td>Lower Manhattan</td>
+                  <td>71742</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td>Total</td>
+                  <td>214470</td>
+                </tr>
+              </tfoot>
             </table>
           </div>
         </div>
 
-        <hr></hr>
         <!--selector and dropdown list-->
-        
       </div>
+      <div class="Table">
+      <table id="myTable">
+        <thead>
+          <tr>
+            <th>Transaction ID</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Transaction Quantity</th>
+            <th>Store ID</th>
+            <th>Store Location</th>
+            <th>Product ID</th>
+            <th>Price</th>
+            <th>Product Category</th>
+            <th>Product Type</th>
+            <th>Product Detail</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
       <div class="selector">
         <div class="bottom-selector">
           <div class="month" id="selector-1">
             <!--month selector-->
             <h3>Month Selector</h3>
-            <label><input type="checkbox" value="January" checked />Jan </label>
-            <label
-              ><input type="checkbox" value="February" checked />Feb
-            </label>
-            <label
-              ><input type="checkbox" value="March" checked /> March
-            </label>
-            <label
-              ><input type="checkbox" value="April" checked /> April
-            </label>
-            <label><input type="checkbox" value="May" checked /> May </label>
-            <label><input type="checkbox" value="June" checked /> June </label>
+            <button value="January">Jan</button>
+            <button value="February">Feb</button>
+            <button value="March">March</button>
+            <button value="April">April</button>
+            <button value="May">May</button>
+            <button value="June">June</button>
           </div>
         </div>
+        <div class="store" id="selector-2">
+          <!--store selector-->
+          <h3>Store Location</h3>
+          <button value="Lower Manhattan">Lower Manhattan</button>
+          <button value="Astoria">Astoria</button>
+          <button value="Hell's Kitchen">Hell's Kitchen</button>
+        </div>
 
-          <div class="store" id="selector-2">
-            <!--store selector-->
-            <h3>Store Location</h3>
-            <label
-              ><input type="checkbox" value="Astoria" checked />Astoria
-            </label>
-            <label
-              ><input type="checkbox" value="Hells Kitchen" checked />Hells
-              Kitchen
-            </label>
-            <label
-              ><input type="checkbox" value="Lower Manhattan" checked />Lower
-              Manhattan
-          </label>
-          </div>
+        <div class="hours" id="selector-3">
+          <!-- hours selector (still progress) -->
+          <h3>Hours</h3>
+        </div>
 
-            <div class="hours" id="selector-3">
-              <!-- hours selector (still progress) -->
-              <h3>Hours</h3>
-            </div>
+        <div class="product-category" id="selector-4">
+          <!-- product-category selector -->
+          <h3>Product Category</h3>
+          <label for="product-category"> </label>
+          <select id="product-category">
+            <option value="All">All</option>
+            <option value="Tea">Tea</option>
+            <option value="Drinking Chocolate">Drinking Chocolate</option>
+            <option value="Coffee">Coffee</option>
+            <option value="Bakery">Bakery</option>
+            <option value="Flavours">Flavours</option>
+          </select>
+        </div>
 
-            <div class="product-category" id="selector-4">
-              <!-- product-category selector -->
-              <h3>Product Category</h3>
-              <label for="product-category"> </label>
-              <select id="product-category">
-                <option value="Tea">Tea</option>
-                <option value="Drinking Chocolate">Drinking Chocolate</option>
-                <option value="Coffee">Coffee</option>
-                <option value="Bakery">Bakery</option>
-                <option value="Flavours">Flavours</option>
-              </select>
-            </div>
-
-            <!-- clear button -->
-            <div class="clear" id="selector-5">
-              <h3>Clear</h3>
-              <ion-icon name="trash-outline"></ion-icon>
-            </div>
-          </div>
+        <!-- clear button -->
+        <div class="clear" id="selector-5">
+          <h3>Clear</h3>
+          <button class="logo-button">
+            <ion-icon name="trash-outline"></ion-icon>
+          </button>
         </div>
       </div>
     </div>
@@ -263,6 +267,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
     <script src="charts.js"></script>
     <!-- Charts Source -->
 
