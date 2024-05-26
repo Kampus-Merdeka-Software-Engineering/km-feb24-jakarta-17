@@ -17,6 +17,7 @@
     --black2: #999;
 }
 
+
 body
 {
     min-height: 100vh;
@@ -260,29 +261,47 @@ body
     'card-1 card-2 card-3'                              
     'chart chart chart';
     grid-gap: 40px;
+    text-align: center;
     align-items: center;
+    
 }
 
 #card-1
 {
     grid-area: card-1;
+    border: 1px solid #ccc;
+    border-radius: transparent;
+    background-color: #543310; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    
 }
 
 #card-2
 {
     grid-area: card-2;
+    border: 1px solid #ccc;
+    border-radius: transparent;
+    background-color: #74512D; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 #card-3
 {
     grid-area: card-3;
+    border: 1px solid #ccc;
+    border-radius: transparent;
+    background-color: #AF8F6F; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .cardBox .card
 {
     position: relative;
     background: var(--white);
-    padding: 30px;
+    padding: 25px;
     border-radius: 20px;
     display: flex;
     justify-content: space-between;
@@ -295,12 +314,12 @@ body
     padding: relative;
     font-weight: 500;
     font-size: 2.5em;
-    color: var(--brown);
+    color: var(--white);
 }
 
 .cardBox .card .cardName
 {
-    color: var(--black2);
+    color: var(--white);
     font-size: 1.1em;
     margin-top: 5px; 
 }
@@ -308,7 +327,7 @@ body
 .cardBox .card .iconBx
 {
     font-size: 3.5em;
-    color: var(--black2);
+    color: var(--white);
 }
 
 /* cardBox ends here */
@@ -324,11 +343,13 @@ body
     'col-4 col-5 col-6 col-7';
     grid-gap: 10px;
     grid-area: chart;
+    
 }
 
 .charts #col-1        /* chart grid */
 {
     grid-area: col-1;
+    
 }
 
 .charts #col-2
@@ -364,4 +385,60 @@ body
 {
     box-shadow: 0 0 3px black;
     border-radius: 10px;
+    width: 100%;
+    height: auto;
+}
+
+
+
+.selector
+{
+    display: grid;
+    grid-template-areas:
+    'selector-1 selector-2 selector-3 selector-4 selector-5';
+    grid-gap: 10px;
+    grid-area: selector;
+}
+
+
+.selector #selector-1   /* selector grid starts here */
+{
+    grid-area: selector-1;
+}
+
+.selector #selector-2
+{
+    grid-area: selector-2;
+}
+
+.selector #selector-3
+{
+    grid-area: selector-3;
+}
+
+.selector #selector-4
+{
+    grid-area: selector-4;
+}
+
+.selector #selector-5
+{
+    grid-area: selector-5;
+}
+
+#col-7 table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+#col-7 th,
+#col-7 td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.Table   
+{
+    margin: 60px 10px;
 }
