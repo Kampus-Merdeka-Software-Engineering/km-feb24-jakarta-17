@@ -88,7 +88,7 @@
       <div class="cardBox">
         <div class="card" id="card-1">
           <div>
-            <div class="numbers">$698,812.33</div>
+            <div class="numbers" id="totalrevenue"></div>
             <div class="cardName">Total Revenue</div>
             <!-- total revenue -->
           </div>
@@ -99,7 +99,7 @@
 
         <div class="card" id="card-2">
           <div>
-            <div class="numbers">149166</div>
+            <div class="numbers" id="totaltransaction"></div>
             <div class="cardName">Total Transaction</div>
             <!-- total transaction -->
           </div>
@@ -199,7 +199,7 @@
             <th>Product Detail</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody id="datasets"></tbody>
       </table>
     </div>
       <div class="selector">
@@ -269,7 +269,8 @@
     ></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
-    <script src="charts.js"></script>
+    <script src="charts.js" type="module"></script>
+  
     <!-- Charts Source -->
 
     <script>

@@ -1,3 +1,107 @@
+import datasets from "./dataset-team17.json" assert { type: "json" };
+
+let totaltransactions = 0;
+let totalrevenue = 0;
+let transactionbyeachday = [];
+for (let index = 0; index < datasets.length; index++) {
+  const dataset = datasets[index];
+  console.log(new Date(dataset.transaction_date));
+  totalrevenue += dataset.unit_price * dataset.transaction_qty;
+  totaltransactions += dataset.transaction_qty;
+  let store = transactionbyeachday.filter(
+    (item) => item.id === dataset.store_id
+  );
+
+  if (store.length > 0) {
+    if (store[0].days[new Date(dataset.transaction_date).getDay()]) {
+      transactionbyeachday = transactionbyeachday.map((item) => {
+        if (item.id === dataset.store_id) {
+          return {
+            ...item,
+            days: {
+              ...item.days,
+              [new Date(dataset.transaction_date).getDay()]:
+                item.days[new Date(dataset.transaction_date).getDay()] +
+                dataset.unit_price * dataset.transaction_qty,
+            },
+          };
+        }
+        return item;
+      });
+    } else {
+      transactionbyeachday = transactionbyeachday.map((item) => {
+        if (item.id === dataset.store_id) {
+          return {
+            ...item,
+            days: {
+              ...item.days,
+              [new Date(dataset.transaction_date).getDay()]:
+                dataset.unit_price * dataset.transaction_qty,
+            },
+          };
+        }
+        return item;
+      });
+    }
+  } else {
+    transactionbyeachday.push({
+      id: dataset.store_id,
+      name: dataset.store_location,
+      days: {
+        [new Date(dataset.transaction_date).getDay()]:
+          dataset.unit_price * dataset.transaction_qty,
+      },
+    });
+  }
+  document.querySelector("#datasets").innerHTML += `
+  <tr>
+    <td>
+    ${dataset.transaction_id}
+    </td>
+    <td>
+    ${dataset.transaction_date}
+    </td>
+    <td>
+    ${dataset.transaction_time}
+    </td>
+    <td>
+    ${dataset.transaction_qty}
+    </td>
+    <td>
+    ${dataset.store_id}
+    </td>
+    <td>
+    ${dataset.store_location}
+    
+    </td>
+    <td>
+    ${dataset.product_id}
+    
+    </td>
+    <td>
+    ${dataset.unit_price}
+    
+    </td>
+    <td>
+    ${dataset.product_category}
+    
+    </td>
+    <td>
+    ${dataset.product_type}
+    
+    </td>
+    <td>
+    ${dataset.product_detail}
+    
+    </td>
+  </tr>
+  `;
+}
+document.querySelector("#totalrevenue").innerHTML =
+  "$" + totalrevenue.toFixed(2);
+document.querySelector("#totaltransaction").innerHTML = totaltransactions;
+console.log(transactionbyeachday);
+
 function createChart(labels, datasets, options, chartid, type) {
   const data = {
     labels: labels,
@@ -14,10 +118,30 @@ function createChart(labels, datasets, options, chartid, type) {
   return myChart;
 }
 // transaction_by_each_day chart:
+function getdatabytransactionbyeachday(items) {
+  let result = [];
+  let colours = ["darkgrey", "grey", "black"];
+  for (let index = 0; index < items.length; index++) {
+    const item = items[index];
+    let data = [];
+    let backgroundColor = [];
+    for (let j = 0; j < 7; j++) {
+      const day = j;
+      data.push(item.days[day] ? item.days[day] : 0);
+      backgroundColor.push(colours[index]);
+    }
+    result.push({
+      label: item.name,
+      backgroundColor: backgroundColor,
+      data: data,
+    });
+  }
+  return result
+}
 
 const transaction_by_each_day = createChart(
   ["Monday", "Tuesday", "Wedsday", "Thursday", "Friday", "Saturday", "Sunday"], // array x:
-  [
+ /* [
     {
       label: "Lower Manhattan", // 3 label buat bar chartnya: // ini juga sebagai legend:
       data: [740300, 703200, 737000, 742700, 732500, 694200, 707300], // array index sesuai dengan jumlah data di labels:
@@ -49,7 +173,8 @@ const transaction_by_each_day = createChart(
         "black",
       ],
     },
-  ],
+  ], **/
+  getdatabytransactionbyeachday(transactionbyeachday),
   {
     plugins: {
       legend: {
@@ -64,7 +189,7 @@ const transaction_by_each_day = createChart(
   },
   "transaction-by-day-Chart",
   "bar"
-);
+); 
 
 // transaction_by_hour_chart:
 const transaction_by_hour_chart = createChart(
@@ -143,7 +268,9 @@ const transaction_by_month_chart = createChart(
       ],
     },
   ],
-  {maintainAspectRatio: false,responsive: false,
+  {
+    maintainAspectRatio: false,
+    responsive: false,
     /* scales: {
       y: {
         autoSkip: true,
@@ -291,7 +418,6 @@ const Revenue_by_Weekday_Weekend_chart = createChart(
   "pie"
 );
 
-	
- let table = new DataTable('#myTable');
+let table = new DataTable("#myTable");
 
-console.log(window)
+console.log(window);
