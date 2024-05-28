@@ -3,10 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coffee Shop Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="./styles.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css" type="text/css"/>
-
+    <title>Maven Roasters</title>
+    <link rel="icon" href="images/coffee-beans.png"/>
+    <link rel="stylesheet" type="text/css" href="./style/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css"
+      type="text/css"
+    />
   </head>
   <body>
     <div class="container">
@@ -80,7 +84,9 @@
         </div>
         <!-- userImg -->
         <div class="user">
-          <img src="/Pratice Project 3/images/dummy_user.jpg" />
+          <img
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.kym-cdn.com%2Fentries%2Ficons%2Ffacebook%2F000%2F038%2F519%2Fcover3.jpg&f=1&nofb=1&ipt=ba7c9cab03b07155170ea2e89d733934f3f867872028a32bcca1678b8e579b5c&ipo=images"
+          />
         </div>
       </div>
 
@@ -139,7 +145,7 @@
           </div>
 
           <div class="chart-a" id="col-3">
-            <!-- right side div chart -->
+          
             <h2>Product Transaction by Store</h2>
             <canvas id="Product-Transaction-by-Store-chart"></canvas>
           </div>
@@ -179,48 +185,52 @@
             </table>
           </div>
         </div>
-
-        <!--selector and dropdown list-->
       </div>
+      <!--DataTables-->
       <div class="Table">
-      <table id="myTable">
-        <thead>
-          <tr>
-            <th>Transaction ID</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Transaction Quantity</th>
-            <th>Store ID</th>
-            <th>Store Location</th>
-            <th>Product ID</th>
-            <th>Price</th>
-            <th>Product Category</th>
-            <th>Product Type</th>
-            <th>Product Detail</th>
-          </tr>
-        </thead>
-        <tbody id="datasets"></tbody>
-      </table>
-    </div>
+        <table id="myTable">
+          <thead>
+            <tr>
+              <th>Transaction ID</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Transaction Quantity</th>
+              <th>Store ID</th>
+              <th>Store Location</th>
+              <th>Product ID</th>
+              <th>Price</th>
+              <th>Product Category</th>
+              <th>Product Type</th>
+              <th>Product Detail</th>
+            </tr>
+          </thead>
+          <tbody id="datasets"></tbody>
+        </table>
+      </div>
+      <!--selector and dropdown list-->
       <div class="selector">
         <div class="bottom-selector">
           <div class="month" id="selector-1">
             <!--month selector-->
-            <h3>Month Selector</h3>
-            <button value="January">Jan</button>
-            <button value="February">Feb</button>
-            <button value="March">March</button>
-            <button value="April">April</button>
-            <button value="May">May</button>
-            <button value="June">June</button>
+            <h3>Months</h3>
+            <div class="buttons">
+              <button value="January">Jan</button>
+              <button value="February">Feb</button>
+              <button value="March">March</button>
+              <button value="April">April</button>
+              <button value="May">May</button>
+              <button value="June">June</button>
+            </div>
           </div>
         </div>
         <div class="store" id="selector-2">
           <!--store selector-->
           <h3>Store Location</h3>
-          <button value="Lower Manhattan">Lower Manhattan</button>
-          <button value="Astoria">Astoria</button>
-          <button value="Hell's Kitchen">Hell's Kitchen</button>
+          <div class="buttons">
+            <button value="Lower Manhattan">Lower Manhattan</button>
+            <button value="Astoria">Astoria</button>
+            <button value="Hell's Kitchen">Hell's Kitchen</button>
+          </div>
         </div>
 
         <div class="hours" id="selector-3">
@@ -245,18 +255,18 @@
         <!-- clear button -->
         <div class="clear" id="selector-5">
           <h3>Clear</h3>
-          <button class="logo-button">
+          <button class="clear-btn">
             <ion-icon name="trash-outline"></ion-icon>
           </button>
         </div>
       </div>
     </div>
 
+    <!-- Icon source-->
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
     ></script>
-    <!-- Icon source-->
     <script
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
@@ -267,30 +277,17 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <!-- DataTables -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
-    <script src="charts.js" type="module"></script>
-  
     <!-- Charts Source -->
-
-    <script>
-      // Menu Toggle
-      let toggle = document.querySelector(".toggle");
-      let navigation = document.querySelector(".navigation");
-      let main = document.querySelector(".main");
-
-      toggle.onclick = function () {
-        navigation.classList.toggle("active");
-        main.classList.toggle("active");
-      };
-
-      // add hovered class in selected list items
-      let list = document.querySelectorAll(".navigation li");
-      function activeLink() {
-        list.forEach((item) => item.classList.remove("hovered"));
-        this.classList.add("hovered");
-      }
-      list.forEach((item) => item.addEventListener("mouseover", activeLink));
-    </script>
+    <script src="./script/charts.js" type="module"></script>
+    <!--Scipt-->
+    <script src="./script/interaction.js"></script>
   </body>
 </html>
