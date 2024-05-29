@@ -3,14 +3,43 @@ import datasets from "../data/dataset-team17.json" assert { type: "json" };
 let totaltransactions = 0;
 let totalrevenue = 0;
 let transactionbyeachday = [];
+let transactionbyhour = [];
+let producttransaction = [];
 for (let index = 0; index < datasets.length; index++) {
   const dataset = datasets[index];
-  console.log(new Date(dataset.transaction_date));
   totalrevenue += dataset.unit_price * dataset.transaction_qty;
   totaltransactions += dataset.transaction_qty;
   let store = transactionbyeachday.filter(
     (item) => item.id === dataset.store_id
   );
+  if (
+    transactionbyhour.filter((item) => item.id === dataset.store_id).length > 0
+  ) {
+    transactionbyhour = transactionbyhour.map((item) => {
+      if (item.id === dataset.store_id) {
+        return {
+          ...item,
+          hours: {
+            ...item.hours,
+            [dataset.transaction_time.split(":")[0]]: item.hours[
+              dataset.transaction_time.split(":")[0]
+            ]
+              ? item.hours[dataset.transaction_time.split(":")[0]] + 1
+              : 1,
+          },
+        };
+      }
+      return item;
+    });
+  } else {
+    transactionbyhour.push({
+      id: dataset.store_id,
+      name: dataset.store_location,
+      hours: {
+        [dataset.transaction_time.split(":")[0]]: 1,
+      },
+    });
+  }
 
   if (store.length > 0) {
     if (store[0].days[new Date(dataset.transaction_date).getDay()]) {
@@ -53,6 +82,35 @@ for (let index = 0; index < datasets.length; index++) {
       },
     });
   }
+  if (
+    producttransaction.filter((item) => item.id === dataset.store_id).length > 0
+  ) {
+    producttransaction = producttransaction.map((item) => {
+      if (item.id === dataset.store_id) {
+        return {
+          ...item,
+          categories: {
+            ...item.categories,
+            [dataset.product_category]: item.categories[
+              dataset.product_category
+            ]
+              ? item.categories[dataset.product_category] + 1
+              : 1,
+          },
+        };
+      }
+      return item;
+    });
+  } else {
+    producttransaction.push({
+      id: dataset.store_id,
+      name: dataset.store_location,
+      categories:{
+        [dataset.product_category]:1
+      }
+    });
+  }
+
   document.querySelector("#datasets").innerHTML += `
   <tr>
     <td>
@@ -97,10 +155,13 @@ for (let index = 0; index < datasets.length; index++) {
   </tr>
   `;
 }
+
 document.querySelector("#totalrevenue").innerHTML =
   "$" + totalrevenue.toFixed(2);
 document.querySelector("#totaltransaction").innerHTML = totaltransactions;
-console.log(transactionbyeachday);
+document.querySelector("#percent").innerHTML =
+  (totalrevenue / datasets.length) * 100;
+console.log(producttransaction);
 
 function createChart(labels, datasets, options, chartid, type) {
   const data = {
@@ -136,12 +197,12 @@ function getdatabytransactionbyeachday(items) {
       data: data,
     });
   }
-  return result
+  return result;
 }
 
 const transaction_by_each_day = createChart(
   ["Monday", "Tuesday", "Wedsday", "Thursday", "Friday", "Saturday", "Sunday"], // array x:
- /* [
+  /* [
     {
       label: "Lower Manhattan", // 3 label buat bar chartnya: // ini juga sebagai legend:
       data: [740300, 703200, 737000, 742700, 732500, 694200, 707300], // array index sesuai dengan jumlah data di labels:
@@ -189,28 +250,28 @@ const transaction_by_each_day = createChart(
   },
   "transaction-by-day-Chart",
   "bar"
-); 
+);
 
 // transaction_by_hour_chart:
+function getdatabytransactionbyhour(items) {
+  let hasil = [];
+  for (let index = 0; index < items.length; index++) {
+    const item = items[index];
+    let data = [];
+
+    for (let j = 7; j < 21; j++) {
+      data.push(item.hours[j] ? item.hours[j] : 0);
+    }
+    hasil.push({
+      label: item.name,
+      data: data,
+    });
+  }
+  return hasil
+}
 const transaction_by_hour_chart = createChart(
-  ["10", "15", "20"],
-  [
-    {
-      label: "Lower Manhattan",
-      data: [651, 59, 80],
-      backgroundColor: ["#63c5da", "#63c5da", "#63c5da"],
-    },
-    {
-      label: "Astoria",
-      data: [651, 59, 80],
-      backgroundColor: ["#0492c2", "#0492c2", "#0492c2"],
-    },
-    {
-      label: "Hell's Kitchen",
-      data: [651, 59, 80],
-      backgroundColor: ["#2832c2", "#2832c2", "#2832c2"],
-    },
-  ],
+  ["7", "8","9","10","11","12","13","14","15","16","17","18","19","20"],
+  getdatabytransactionbyhour(transactionbyhour),
   {
     plugins: {
       legend: {
@@ -331,6 +392,37 @@ const store_location_revenue_chart = createChart(
 );
 
 // Product-Transaction-by-Store-chart:
+function getdatabyproducttransaction(items) {
+  let hasil = [];
+  let total ={
+    label: "Total",
+    data:[]
+  }
+  for (let index = 0; index < items.length; index++) {
+    const item = items[index];
+    let data = [];
+    let categories=["Coffee",
+    "Bakery",
+    "Drinking Chocolate",
+    "Tea",
+    "Flavours",
+    "Coffee Beans",
+    "Branded",
+    "Loose Tea",
+    "Packaged Chocolate"];
+    for (let j = 0; j < categories.length; j++) {
+      data.push(item.categories[categories[j]] ? item.categories[categories[j]] : 0);
+      total.data[j]=total.data[j] ? total.data[j]+item.categories[categories[j]] : item.categories[categories[j]] ? item.categories[categories[j]] : 0
+    }
+    hasil.push({
+      label: item.name,
+      data: data,
+    });
+  }
+  hasil.push(total)
+  return hasil
+}
+console.log(getdatabyproducttransaction(producttransaction))
 const Product_Transaction_by_Store_chart = createChart(
   [
     "Coffee",
@@ -342,30 +434,8 @@ const Product_Transaction_by_Store_chart = createChart(
     "Branded",
     "Loose Tea",
     "Packaged Chocolate",
-    " ",
   ], // array x:
-  [
-    {
-      label: "Lower Manhattan", // 3 label buat bar chartnya: // ini juga sebagai legend:
-      data: [651, 200, 300, 100, 100, 100, 100, 100], // array index sesuai dengan jumlah data di labels:
-      backgroundColor: ["#F1DEC9"],
-    },
-    {
-      label: "Astoria",
-      data: [651, 200, 300, 100, 100, 100, 100, 100],
-      backgroundColor: ["#6AC8B6"],
-    },
-    {
-      label: "Hell's Kitchen",
-      data: [651, 200, 300, 100, 100, 100, 100, 100],
-      backgroundColor: ["#A4907C"],
-    },
-    {
-      label: "Total Penjualan",
-      data: [651, 200, 300, 100, 100, 100, 100, 100],
-      backgroundColor: ["#8D7B68"],
-    },
-  ],
+  getdatabyproducttransaction(producttransaction),
   {
     indexAxis: "y",
     scales: {
