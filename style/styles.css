@@ -35,7 +35,7 @@ body
 .navigation  /* navgitaon bar starts here*/
 {
     position: fixed;
-    width: 300px;
+    width: 235px;
     height: 100%;
     background: var(--brown);
     border-left: 10px solid var(--brown);
@@ -154,8 +154,8 @@ body
 .main    
 {
     position: absolute;
-    width: calc(100% - 300px);
-    left: 300px;
+    width: calc(100% - 235px);
+    left: 235px;
     min-height: 100vh;
     background: var(--white);
     transition: 0.5s;
