@@ -148,10 +148,10 @@
             <h2>Product Transaction by Store</h2>
             <canvas id="Product-Transaction-by-Store-chart"></canvas>
           </div>
-          <div class="chart-a" id="col-6">
+          <!-- <div class="chart-a" id="col-6">
             <h2>Revenue by Weekday / Weekend</h2>
             <canvas id="Revenue-by-Weekday/Weekend-chart"></canvas>
-          </div>
+          </div>  -->
           <div class="chart-a" id="col-7">
             <h2>Sold Quantity</h2>
             <table>
@@ -161,25 +161,11 @@
                   <th>Quantity</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>Astoria</td>
-                  <td>70991</td>
-                </tr>
-                <tr>
-                  <td>Hell's Kitchen</td>
-                  <td>71737</td>
-                </tr>
-                <tr>
-                  <td>Lower Manhattan</td>
-                  <td>71742</td>
-                </tr>
+              <tbody id="sold-quantity">
+        
               </tbody>
-              <tfoot>
-                <tr>
-                  <td>Total</td>
-                  <td>214470</td>
-                </tr>
+              <tfoot id="tablefoot">
+        
               </tfoot>
             </table>
           </div>
@@ -187,7 +173,7 @@
       </div>
       <!--DataTables-->
       <div class="Table" id="datasets-section">
-        <h2>Datasets</h2>
+        <h2 class="titledatasets">Datasets</h2>
         <table id="myTable">
           <thead>
             <tr>
@@ -227,15 +213,19 @@
           <!--store selector-->
           <h3>Store Location</h3>
           <div class="buttons">
-            <button value="Lower Manhattan">Lower Manhattan</button>
-            <button value="Astoria">Astoria</button>
-            <button value="Hell's Kitchen">Hell's Kitchen</button>
+            <button class="storefilter" value="Lower Manhattan">Lower Manhattan</button>
+            <button class="storefilter" value="Astoria">Astoria</button>
+            <button class="storefilter" value="Hell's Kitchen">Hell's Kitchen</button>
           </div>
         </div>
 
         <div class="hours" id="selector-3">
+            <label for="hourRange">Filter Hours:</label>
+            <input type="range" id="hourRange" name="hourRange" min="7" max="20" value="7" oninput="updateHourDisplay(this.value)">
+            <span id="hourValue">7</span> - 20
+          </div>
           <!-- hours selector (still progress) -->
-          <h3>Hours</h3>
+
         </div>
 
         <div class="product-category" id="selector-4">
