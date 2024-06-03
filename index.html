@@ -26,7 +26,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#dashboard">
               <span class="icon"
                 ><ion-icon name="grid-outline"></ion-icon
               ></span>
@@ -34,7 +34,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#datasets-section">
               <span class="icon"
                 ><ion-icon name="cube-outline"></ion-icon
               ></span>
@@ -70,7 +70,7 @@
     </div>
 
     <!-- main -->
-    <div class="main">
+    <div class="main" id="dashboard">
       <div class="topbar">
         <div class="toggle">
           <ion-icon name="menu-outline"></ion-icon>
@@ -145,7 +145,6 @@
           </div>
 
           <div class="chart-a" id="col-3">
-          
             <h2>Product Transaction by Store</h2>
             <canvas id="Product-Transaction-by-Store-chart"></canvas>
           </div>
@@ -187,7 +186,8 @@
         </div>
       </div>
       <!--DataTables-->
-      <div class="Table">
+      <div class="Table" id="datasets-section">
+        <h2>Datasets</h2>
         <table id="myTable">
           <thead>
             <tr>
@@ -287,7 +287,7 @@
     <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
     <!-- Charts Source -->
     <script src="./script/charts.js" type="module"></script>
-    <!--Scipt-->
+    <!--Script-->
     <script src="./script/interaction.js"></script>
   </body>
 </html>
