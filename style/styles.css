@@ -310,6 +310,7 @@ body {
   ;
   grid-gap: 20px;
   grid-area: chart;
+  margin: 3em;
 }
 
 .charts .chart-a {
