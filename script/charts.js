@@ -1,4 +1,4 @@
-import datasets from "../data/dataset-team17.json" assert { type: "json" };
+import datasets from "..data/dataset-team17.json" assert { type: "json" };
 
 // Initialize variables to store total transactions and revenue
 let totaltransactions = 0;
