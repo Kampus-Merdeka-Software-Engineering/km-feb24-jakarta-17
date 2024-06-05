@@ -303,15 +303,17 @@ body {
 .charts {
   display: grid;
   grid-template-areas:
-    "col-1 col-2 col-3"
-    "col-4 col-5 col-6"
-    "col-7 col-8 col-9"; /* 3 by 3 grid for charts */
-  grid-gap: 10px;
+    "col-1 col-2"
+    "col-3 col-4"
+    "col-5 col-6"
+    "col-7 col-8"
+  ;
+  grid-gap: 20px;
   grid-area: chart;
 }
 
 .charts .chart-a {
-  box-shadow: 0 0 3px black;
+  box-shadow: 0 0 0.25em black;
   border-radius: 10px;
   width: 100%;
   height: auto;
@@ -361,7 +363,7 @@ body {
   margin: 0 5px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, color 0.3s;
 }
 
 .buttons button:hover,
@@ -538,3 +540,19 @@ table.dataTable td:focus {
     margin: 0;
   }
 }
+
+/* Improved h2 styling */
+.titlechart {
+  font-size: 1.25em;
+  color: var(--brown);
+  margin: 20px 0;
+  padding: 10px;
+  border-bottom: 2px solid var(--grey);
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+

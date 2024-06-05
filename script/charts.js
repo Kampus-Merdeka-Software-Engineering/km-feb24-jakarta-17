@@ -769,23 +769,6 @@ buttonfilter.forEach((button) => {
           },
         });
       }
-
-      // Append dataset entry to HTML table
-      /* document.querySelector("#datasets").innerHTML += `
-      <tr>
-        <td>${dataset.transaction_id}</td>
-        <td>${dataset.transaction_date}</td>
-        <td>${dataset.transaction_time}</td>
-        <td>${dataset.transaction_qty}</td>
-        <td>${dataset.store_id}</td>
-        <td>${dataset.store_location}</td>
-        <td>${dataset.product_id}</td>
-        <td>${dataset.unit_price}</td>
-        <td>${dataset.product_category}</td>
-        <td>${dataset.product_type}</td>
-        <td>${dataset.product_detail}</td>
-      </tr>
-      `; */
     }
 
     for (let index = 0; index < totalstoretransactions.length; index++) {
@@ -819,7 +802,17 @@ buttonfilter.forEach((button) => {
   ${tablefoot}
   </td>
   </tr>`;
-  console.log(totalstoretransactions)
+    console.log(totalstoretransactions);
   });
-  
 });
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  const buttons = document.querySelectorAll(".buttons button");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      button.classList.toggle("active");
+    });
+  });
+});
+
