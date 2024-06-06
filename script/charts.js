@@ -410,11 +410,11 @@ function getdatabytotalrevenuepercent(items, totalrevenue) {
     const item = items[index];
     let backgroundColor = "";
     if (item.name === "Astoria") {
-      backgroundColor = "grey";
+      backgroundColor = "#1b2b3b";
     } else if (item.name === "Lower Manhattan") {
-      backgroundColor = "darkgrey";
+      backgroundColor = "#344e60";
     } else if (item.name === "Hell's Kitchen") {
-      backgroundColor = "black";
+      backgroundColor = "#a8948a";
     }
     totalrevenuepercent.push({
       label: item.name,
