@@ -613,7 +613,7 @@ table.dataTable td:focus {
 	cursor: pointer;
 }
 
-@media(max-width: 1080px){
+@media(max-width: 768px){
 	.team{
 		width: 100%;
 		height: auto;
