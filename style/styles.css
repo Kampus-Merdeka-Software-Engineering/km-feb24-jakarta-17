@@ -306,15 +306,14 @@ body {
     "col-1 col-2"
     "col-3 col-4"
     "col-5 col-6"
-    "col-7 col-8"
-  ;
+    "col-7 col-8";
   grid-gap: 20px;
   grid-area: chart;
   margin: 3em;
 }
 
 .charts .chart-a {
-  box-shadow: 0 0 0.25em black;
+  box-shadow: 0 0 0.5em black;
   border-radius: 10px;
   width: 100%;
   height: auto;
@@ -324,6 +323,7 @@ body {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
+  border-style: transparent;
 }
 
 #col-7 th,
@@ -332,13 +332,59 @@ body {
   border-bottom: 1px solid #ddd;
 }
 
-/* Selector styling */
+/* Tables styling */
+table {
+  width: 100%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+table thead,
+table tfoot {
+  background-color: #f2f2f2;
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+table th {
+  background-color: #af8f6f;
+  color: white;
+}
+
+/* Alternating row colors */
+table tbody tr:nth-child(odd) {
+  background-color: #d3d3d3; /* light grey */
+}
+
+table tbody tr:nth-child(even) {
+  background-color: white; /* dark grey */
+}
+
+table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+table tbody tr.selected {
+  background-color: #e0e0e0;
+}
+
+table td:focus {
+  outline: none;
+}
+
+/* Improved Selector styling */
 .selector {
   display: flex;
   border-top: 2px solid var(--grey);
-  margin: 10px 0;
+  margin: 20px 0; /* Increased top margin for better spacing */
   justify-content: space-between;
-  margin-top: 20px;
+  padding: 10px 0; /* Added padding for improved spacing */
   text-align: center;
 }
 
@@ -411,6 +457,7 @@ select {
   cursor: pointer;
   border-radius: 50%;
 }
+
 .clear-btn {
   padding: 10px 20px;
   background-color: #e9ecef;
@@ -424,13 +471,7 @@ select {
   background-color: #ae0c00;
 }
 
-.Table {
-  margin: 60px 10px;
-  padding: 10px 10px;
-}
-
 /* DataTable styling */
-
 table.dataTable {
   width: 100%;
   margin: 0 auto;
@@ -438,7 +479,8 @@ table.dataTable {
   border: 1px solid #ddd;
 }
 
-table.dataTable thead {
+table.dataTable thead,
+table.dataTable tfoot {
   background-color: #f2f2f2;
 }
 
@@ -554,6 +596,3 @@ table.dataTable td:focus {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-
-
-
