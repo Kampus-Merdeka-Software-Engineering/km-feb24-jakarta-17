@@ -387,6 +387,7 @@ table td:focus {
   justify-content: space-between;
   padding: 10px 0; /* Added padding for improved spacing */
   text-align: center;
+  
 }
 
 .selector.bottom-selector {
