@@ -273,7 +273,7 @@ function createChart(labels, datasets, options, chartid, type) {
 // Prepare data for the "Transaction by Each Day" chart
 function getdatabytransactionbyeachday(items) {
   let result = [];
-  let colours = ["darkgrey", "grey", "black"];
+  let colours = ["#1b2b3b", "#344e60", "#a8948a"];
   for (let index = 0; index < items.length; index++) {
     const item = items[index];
     let data = [];
@@ -410,11 +410,11 @@ function getdatabytotalrevenuepercent(items, totalrevenue) {
     const item = items[index];
     let backgroundColor = "";
     if (item.name === "Astoria") {
-      backgroundColor = "grey";
+      backgroundColor = "#1b2b3b";
     } else if (item.name === "Lower Manhattan") {
-      backgroundColor = "darkgrey";
+      backgroundColor = "#344e60";
     } else if (item.name === "Hell's Kitchen") {
-      backgroundColor = "black";
+      backgroundColor = "#a8948a";
     }
     totalrevenuepercent.push({
       label: item.name,
