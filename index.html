@@ -9,7 +9,8 @@
     <link
       rel="stylesheet"
       href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css"
-      type="text/css"/>
+      type="text/css"
+    />
   </head>
   <body>
     <div class="container">
@@ -76,7 +77,7 @@
         </div>
         <!-- userImg -->
         <div class="user">
-          <img src="images/logo_team17.png">
+          <img src="images/logo_team17.png" />
         </div>
       </div>
 
@@ -160,32 +161,31 @@
       <!--selector and dropdown list-->
       <div class="selector">
         <div class="bottom-selector">
-          <div class="month" id="selector-1">
-            <!--month selector-->
-            <h3>Months</h3>
-            <div class="buttons">
-              <button class="monthfilter" value="January">Jan</button>
-              <button class="monthfilter" value="February">Feb</button>
-              <button class="monthfilter" value="March">March</button>
-              <button class="monthfilter" value="April">April</button>
-              <button class="monthfilter" value="May">May</button>
-              <button class="monthfilter" value="June">June</button>
-            </div>
+          <div class="dropdown" id="selector-1">
+            <!--month dropdown-->
+            <label for="month-filter">Months</label>
+            <select id="monthfilter" class="monthfilter">
+              <option class="monthfilter" value="All Months">All Months</option>
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+            </select>
           </div>
-          <div class="store" id="selector-2">
-            <!--store selector-->
-            <h3>Store Location</h3>
-            <div class="buttons">
-              <button class="storefilter" value="Lower Manhattan">
-                Lower Manhattan
-              </button>
-              <button class="storefilter" value="Astoria">Astoria</button>
-              <button class="storefilter" value="Hell's Kitchen">
-                Hell's Kitchen
-              </button>
-            </div>
+          <div class="dropdown" id="selector-2">
+            <!--store dropdown-->
+            <label for="store-filter">Store Location</label>
+            <select id="storefilter" class="storefilter">
+              <option value="All Store">All Store</option>
+              <!-- <option value="Lower Manhattan">Lower Manhattan</option>
+              <option value="Astoria">Astoria</option>
+              <option value="Hell's Kitchen">Hell's Kitchen</option> -->
+            </select>
           </div>
-          <div class="hours" id="selector-3">
+          <!-- hours selector (still progress) -->
+          <!-- <div class="hours" id="selector-3">
             <label for="hourRange">Filter Hours:</label>
             <input
               type="range"
@@ -197,14 +197,12 @@
               oninput="updateHourDisplay(this.value)"
             />
             <span id="hourValue">7</span> - 20
-          </div>
-          <!-- hours selector (still progress) -->
+          </div> -->
         </div>
-        <div class="product-category" id="selector-4">
-          <!-- product-category selector -->
-          <h3>Product Category</h3>
-          <label for="product-category"></label>
-          <select id="product-category">
+        <!-- product-category dropdown -->
+        <div class="dropdown" id="selector-4">
+          <label for="filter-categories">All Categories</label>
+          <select class="filter-categories" id="product-category">
             <option value="All">All</option>
             <option value="Tea">Tea</option>
             <option value="Drinking Chocolate">Drinking Chocolate</option>
@@ -216,7 +214,7 @@
         <!-- clear button -->
         <div class="clear" id="selector-5">
           <h3>Clear</h3>
-          <button class="clear-btn">
+          <button id="clearfilter" class="clear-btn">
             <ion-icon name="trash-outline"></ion-icon>
           </button>
         </div>
@@ -250,89 +248,85 @@
         <div class="center">
           <h1>Team 17 Jakarta</h1>
         </div>
-    
+
         <div class="team-content">
           <div class="box">
-            <img src="images/alip.png">
+            <img src="images/alip.png" />
             <h3>Alif Riziq</h3>
             <h5>Team Leader Project</h5>
           </div>
-    
+
           <div class="box">
-            <img src="images/rey.png">
+            <img src="images/rey.png" />
             <h3>Reynhard Moses Baware</h3>
             <h5>Front End Engineer</h5>
           </div>
-    
+
           <div class="box">
-            <img src="images/taqi.png">
+            <img src="images/taqi.png" />
             <h3>Muhammad Joel Fikri Al Taqi</h3>
             <h5>Front End Engineer</h5>
           </div>
-    
+
           <div class="box">
-            <img src="images/vitah.png">
+            <img src="images/vitah.png" />
             <h3>Izza Merry Vitah Ramadani</h3>
             <h5>Front End Engineer</h5>
           </div>
-    
         </div>
-    
+
         <div class="team-content">
           <div class="box">
-            <img src="#">
+            <img src="#" />
             <h3>Muhammad Abduh Rozaqi</h3>
             <h5>Front End Engineer</h5>
           </div>
 
           <div class="box">
-            <img src="images/elisa.png">
+            <img src="images/elisa.png" />
             <h3>Elisa Diaz Agustina</h3>
             <h5>Deployment Team</h5>
           </div>
-    
+
           <div class="box">
-            <img src="images/syifa.png">
+            <img src="images/syifa.png" />
             <h3>Nur Asysyifa Febriyanti</h3>
             <h5>Pitch Deck Team</h5>
           </div>
-    
+
           <div class="box">
-            <img src="images/clarissa.png">
+            <img src="images/clarissa.png" />
             <h3>Clarissa Septia Damayanti</h3>
             <h5>Pitch Deck Team</h5>
           </div>
-    
         </div>
 
         <div class="team-content">
           <div class="box">
-            <img src="#">
+            <img src="#" />
             <h3>Nindri Lia Desmita</h3>
             <h5>Pitch Deck Team</h5>
           </div>
 
           <div class="box">
-            <img src="images/alif.png">
+            <img src="images/alif.png" />
             <h3>Alif Abdul Hakim</h3>
             <h5>Quality Assurance</h5>
           </div>
-    
+
           <div class="box">
-            <img src="images/niken.png">
+            <img src="images/niken.png" />
             <h3>Niken Arifah Nur Fauziah</h3>
             <h5>Quality Assurance</h5>
           </div>
-    
+
           <div class="box">
-            <img src="images/christi.png">
+            <img src="images/christi.png" />
             <h3>Priskilia Christi Nikodimus</h3>
             <h5>Quality Assurance</h5>
           </div>
-    
         </div>
       </section>
-
     </div>
 
     <!-- Icon source-->

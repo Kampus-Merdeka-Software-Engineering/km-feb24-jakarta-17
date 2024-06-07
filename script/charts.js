@@ -243,7 +243,6 @@ document.querySelector("#tablefoot").innerHTML = `
   </td>
   </tr>`;
 
-console.log(totalstoretransactions);
 function getdatabypercent(items, totalrevenue) {
   let totalrevenuepercent = 0;
   for (let index = 0; index < items.length; index++) {
@@ -570,7 +569,10 @@ let table = new DataTable("#myTable", {
   data: datasets,
 });
 
-let buttonfilter = document.querySelectorAll(".storefilter");
+
+
+
+/* let buttonfilter = document.querySelectorAll(".storefilter");
 buttonfilter.forEach((button) => {
   button.addEventListener("click", (event) => {
     let storefiltervalue = event.target.value;
@@ -807,11 +809,14 @@ buttonfilter.forEach((button) => {
 });
 
 document.addEventListener("DOMContentLoaded", (event) => {
-  const buttons = document.querySelectorAll(".buttons button");
+  const buttons = document.querySelectorAll(".select");
 
+
+
+  
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
       button.classList.toggle("active");
     });
   });
-});
+}); */
