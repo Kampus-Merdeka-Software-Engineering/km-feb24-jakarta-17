@@ -20,3 +20,4 @@ document.addEventListener("DOMContentLoaded", (event) => {
   }
   list.forEach((item) => item.addEventListener("mouseover", activeLink));
 });
+

@@ -511,51 +511,51 @@ table td:focus {
   background-color: #ae0c00;
 }
 
-/* DataTable styling */
-/* #mytable { */
-  /* width: 100%;
-  margin: 0 auto; */
-  /* border-collapse: collapse;
+/*DataTable styling */
+#myTable {
+ width: 100% !important;
+  margin: 0 auto; 
+ border-collapse: collapse;
   border: 1px solid #ddd;
-} */
+}
 
-/* #mytable thead,
-#mytable tfoot {
+#myTable thead,
+#myTable tfoot {
   background-color: #f2f2f2;
 }
 
-#mytable th,
-#mytable td {
+#myTable th,
+#myTable td {
   padding: 10px;
   text-align: left;
   border: 1px solid #ddd;
 }
 
-#mytable th {
+#myTable th {
   background-color: #af8f6f;
   color: white;
-} */
+} 
 
 /* Alternating row colors */
-/* #mytable tbody tr:nth-child(odd) {
+ #myTable tbody tr:nth-child(odd) {
   background-color: #d3d3d3;
 }
 
-#mytable tbody tr:nth-child(even) {
+#myTable tbody tr:nth-child(even) {
   background-color: white; 
 }
 
-#mytable tbody tr:hover {
+#myTable tbody tr:hover {
   background-color: #f1f1f1;
 }
 
-#mytable tbody tr.selected {
+#myTable tbody tr.selected {
   background-color: #e0e0e0;
 }
 
-#mytable td:focus {
+#myTable td:focus {
   outline: none;
-} */
+} 
 
 /* Responsive adjustments */
 @media (max-width: 1200px) {
