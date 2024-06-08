@@ -381,20 +381,21 @@ table td:focus {
 
 /* Improved Selector styling */
 .selector {
+  justify-content: center;
   display: flex;
-  align-items: center; /* Align items vertically */
-  margin-top: 30px;
-  padding: 0 30px; /* Adjust horizontal padding */
+  gap: 30px;
+  height: 35px;
+  text-align: center;
 }
 
-.selector .bottom-selector {
+/* .selector .bottom-selector {
   display: flex;
   flex-direction: row;
   gap: 10px; /* Adjust the gap between dropdowns */
-}
+/* }  */
 
 .selector .dropdown {
-  flex: 1; /* Distribute available space equally */
+  flex: 0; /* Distribute available space equally */
 }
 
 .selector .dropdown h3 {
@@ -403,10 +404,21 @@ table td:focus {
 }
 
 .selector .dropdown select {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid #0a142f;
+}
+
+#monthfilter {
+  width: 110px;
+}
+
+#storefilter {
+  width: 140px;
+}
+
+#filter-categories {
+  width: 200px;
 }
 
 /* Clear button styling */
@@ -443,14 +455,14 @@ table td:focus {
   background-color: grey;
 } */
 
-select {
+/* select {
   width: 160px;
     padding: 16px 24px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin: 10px 0px 10px 48px;
-}
+} */
 
 /* .selector input[type="range"] {
   width: 300px;
