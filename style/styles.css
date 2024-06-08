@@ -19,7 +19,7 @@
 
 body {
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: visible;
 }
 
 .container {
@@ -336,7 +336,7 @@ body {
 /* Tables styling */
 table {
   width: 100%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   border-collapse: collapse;
   border: 1px solid #ddd;
 }
@@ -512,50 +512,50 @@ table td:focus {
 }
 
 /* DataTable styling */
-table.dataTable {
-  width: 100%;
-  margin: 0 auto;
-  border-collapse: collapse;
+/* #mytable { */
+  /* width: 100%;
+  margin: 0 auto; */
+  /* border-collapse: collapse;
   border: 1px solid #ddd;
-}
+} */
 
-table.dataTable thead,
-table.dataTable tfoot {
+/* #mytable thead,
+#mytable tfoot {
   background-color: #f2f2f2;
 }
 
-table.dataTable th,
-table.dataTable td {
+#mytable th,
+#mytable td {
   padding: 10px;
   text-align: left;
   border: 1px solid #ddd;
 }
 
-table.dataTable th {
+#mytable th {
   background-color: #af8f6f;
   color: white;
-}
+} */
 
 /* Alternating row colors */
-table.dataTable tbody tr:nth-child(odd) {
-  background-color: #d3d3d3; /* light grey */
+/* #mytable tbody tr:nth-child(odd) {
+  background-color: #d3d3d3;
 }
 
-table.dataTable tbody tr:nth-child(even) {
-  background-color: white; /* dark grey */
+#mytable tbody tr:nth-child(even) {
+  background-color: white; 
 }
 
-table.dataTable tbody tr:hover {
+#mytable tbody tr:hover {
   background-color: #f1f1f1;
 }
 
-table.dataTable tbody tr.selected {
+#mytable tbody tr.selected {
   background-color: #e0e0e0;
 }
 
-table.dataTable td:focus {
+#mytable td:focus {
   outline: none;
-}
+} */
 
 /* Responsive adjustments */
 @media (max-width: 1200px) {
@@ -616,8 +616,6 @@ table.dataTable td:focus {
       "col-6"
       "col-7";
   }
-  
-
 
   .search {
     width: auto;

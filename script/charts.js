@@ -272,7 +272,6 @@ function createChart(labels, datasets, options, chartid, type) {
 // Prepare data for the "Transaction by Each Day" chart
 function getdatabytransactionbyeachday(items) {
   let result = [];
-  let colours = ["#1b2b3b", "#344e60", "#a8948a"];
   for (let index = 0; index < items.length; index++) {
     const item = items[index];
     let data = [];
@@ -280,7 +279,13 @@ function getdatabytransactionbyeachday(items) {
     for (let j = 0; j < 7; j++) {
       const day = j;
       data.push(item.days[day] ? item.days[day] : 0);
-      backgroundColor.push(colours[index]);
+      if (item.name === "Astoria") {
+        backgroundColor.push("#1b2b3b");
+      } else if (item.name === "Hell's Kitchen") {
+        backgroundColor.push("#344e60");
+      } else if (item.name === "Lower Manhattan") {
+        backgroundColor.push("#a8948a");
+      }
     }
     result.push({
       label: item.name,
@@ -315,15 +320,25 @@ const transaction_by_each_day = createChart(
 // Prepare data for the "Transaction by Hour" chart
 function getdatabytransactionbyhour(items) {
   let hasil = [];
+  console.log(items);
   for (let index = 0; index < items.length; index++) {
     const item = items[index];
     let data = [];
-
+    let backgroundColor = [];
     for (let j = 7; j < 21; j++) {
       data.push(item.hours[j] ? item.hours[j] : 0);
+      if (item.name === "Astoria") {
+        backgroundColor.push("#1b2b3b");
+      } else if (item.name === "Hell's Kitchen") {
+        backgroundColor.push("#344e60");
+      } else if (item.name === "Lower Manhattan") {
+        backgroundColor.push("#a8948a");
+      }
     }
     hasil.push({
       label: item.name,
+      backgroundColor: backgroundColor,
+      borderColor: backgroundColor,
       data: data,
     });
   }
@@ -372,12 +387,21 @@ function getdatabytransactionbymonth(items) {
   for (let index = 0; index < items.length; index++) {
     const item = items[index];
     let data = [];
-
+    let backgroundColor = [];
     for (let j = 1; j < 7; j++) {
       data.push(item.date[j] ? item.date[j] : 0);
+      if (item.name === "Astoria") {
+        backgroundColor.push("#1b2b3b");
+      } else if (item.name === "Hell's Kitchen") {
+        backgroundColor.push("#344e60");
+      } else if (item.name === "Lower Manhattan") {
+        backgroundColor.push("#a8948a");
+      }
     }
     hasil.push({
       label: item.name,
+      backgroundColor: backgroundColor,
+      borderColor: backgroundColor,
       data: data,
     });
   }
@@ -447,8 +471,10 @@ function getdatabyproducttransaction(items) {
   let hasil = [];
   let total = {
     label: "Total",
+    backgroundColor: "blue",
     data: [],
   };
+  console.log(items);
   for (let index = 0; index < items.length; index++) {
     const item = items[index];
     let data = [];
@@ -474,11 +500,21 @@ function getdatabyproducttransaction(items) {
         ? total.data[j] + totalcategories
         : totalcategories;
     }
+    let backgroundColor = "";
+    if (item.name === "Astoria") {
+      backgroundColor = "#1b2b3b";
+    } else if (item.name === "Lower Manhattan") {
+      backgroundColor = "#344e60";
+    } else if (item.name === "Hell's Kitchen") {
+      backgroundColor = "#a8948a";
+    }
     hasil.push({
       label: item.name,
       data: data,
+      backgroundColor: backgroundColor,
     });
   }
+  console.log(hasil);
   hasil.push(total);
   return hasil;
 }
@@ -568,255 +604,310 @@ let table = new DataTable("#myTable", {
   ],
   data: datasets,
 });
+let monthfilter = document.querySelector(".monthfilter");
+let categoryfilter = document.querySelector(".filter-categories");
 
 
-
-
-/* let buttonfilter = document.querySelectorAll(".storefilter");
-buttonfilter.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    let storefiltervalue = event.target.value;
-    let rows = datasets.filter(
-      (item) => item.store_location === storefiltervalue
-    );
-    let totaltransactions = 0;
-    let totalrevenue = 0;
-    let tablefoot = 0;
-
-    // Initialize arrays to store various transaction data
-    let transactionbyeachday = [];
-    let transactionbyhour = [];
-    let producttransaction = [];
-    let transactionbymonth = [];
-    let percent = [];
-    let totalstoretransactions = [];
-
-    // Loop through each dataset entry
-    for (let index = 0; index < rows.length; index++) {
-      const dataset = rows[index];
-
-      if (percent.filter((item) => item.id === dataset.store_id).length > 0) {
-        percent = percent.map((item) => {
-          if (item.id === dataset.store_id) {
-            return {
-              ...item,
-              value: item.value + dataset.unit_price * dataset.transaction_qty,
-            };
-          }
-          return item;
-        });
-      } else {
-        percent.push({
-          name: dataset.store_location,
-          id: dataset.store_id,
-          value: dataset.unit_price * dataset.transaction_qty,
-        });
-      }
-
-      if (
-        totalstoretransactions.filter((item) => item.id === dataset.store_id)
-          .length > 0
-      ) {
-        totalstoretransactions = totalstoretransactions.map((item) => {
-          if (item.id === dataset.store_id) {
-            return { ...item, value: item.value + dataset.transaction_qty };
-          }
-          return item;
-        });
-      } else {
-        totalstoretransactions.push({
-          name: dataset.store_location,
-          id: dataset.store_id,
-          value: dataset.transaction_qty,
-        });
-      }
-
-      // Calculate total revenue and transactions
-      totalrevenue += dataset.unit_price * dataset.transaction_qty;
-      totaltransactions += 1;
-
-      // Update transaction data by hour for each store
-      if (
-        transactionbyhour.filter((item) => item.id === dataset.store_id)
-          .length > 0
-      ) {
-        transactionbyhour = transactionbyhour.map((item) => {
-          if (item.id === dataset.store_id) {
-            return {
-              ...item,
-              hours: {
-                ...item.hours,
-                [dataset.transaction_time.split(":")[0]]: item.hours[
-                  dataset.transaction_time.split(":")[0]
-                ]
-                  ? item.hours[dataset.transaction_time.split(":")[0]] + 1
-                  : 1,
-              },
-            };
-          }
-          return item;
-        });
-      } else {
-        transactionbyhour.push({
-          id: dataset.store_id,
-          name: dataset.store_location,
-          hours: {
-            [dataset.transaction_time.split(":")[0]]: 1,
-          },
-        });
-      }
-
-      // Update transaction data by day for each store
-      let store = transactionbyeachday.filter(
-        (item) => item.id === dataset.store_id
-      );
-      if (store.length > 0) {
-        if (store[0].days[new Date(dataset.transaction_date).getDay()]) {
-          transactionbyeachday = transactionbyeachday.map((item) => {
-            if (item.id === dataset.store_id) {
-              return {
-                ...item,
-                days: {
-                  ...item.days,
-                  [new Date(dataset.transaction_date).getDay()]:
-                    item.days[new Date(dataset.transaction_date).getDay()] +
-                    dataset.unit_price * dataset.transaction_qty,
-                },
-              };
-            }
-            return item;
-          });
-        } else {
-          transactionbyeachday = transactionbyeachday.map((item) => {
-            if (item.id === dataset.store_id) {
-              return {
-                ...item,
-                days: {
-                  ...item.days,
-                  [new Date(dataset.transaction_date).getDay()]:
-                    dataset.unit_price * dataset.transaction_qty,
-                },
-              };
-            }
-            return item;
-          });
-        }
-      } else {
-        transactionbyeachday.push({
-          id: dataset.store_id,
-          name: dataset.store_location,
-          days: {
-            [new Date(dataset.transaction_date).getDay()]:
-              dataset.unit_price * dataset.transaction_qty,
-          },
-        });
-      }
-
-      // Update product transaction data by category for each store
-      if (
-        producttransaction.filter((item) => item.id === dataset.store_id)
-          .length > 0
-      ) {
-        producttransaction = producttransaction.map((item) => {
-          if (item.id === dataset.store_id) {
-            return {
-              ...item,
-              categories: {
-                ...item.categories,
-                [dataset.product_category]: item.categories[
-                  dataset.product_category
-                ]
-                  ? item.categories[dataset.product_category] + 1
-                  : 1,
-              },
-            };
-          }
-          return item;
-        });
-      } else {
-        producttransaction.push({
-          id: dataset.store_id,
-          name: dataset.store_location,
-          categories: {
-            [dataset.product_category]: 1,
-          },
-        });
-      }
-      if (
-        transactionbymonth.filter((item) => item.id === dataset.store_id)
-          .length > 0
-      ) {
-        transactionbymonth = transactionbymonth.map((item) => {
-          if (item.id === dataset.store_id) {
-            return {
-              ...item,
-              date: {
-                ...item.date,
-                [dataset.transaction_date.split("/")[0]]: item.date[
-                  dataset.transaction_date.split("/")[0]
-                ]
-                  ? item.date[dataset.transaction_date.split("/")[0]] + 1
-                  : 1,
-              },
-            };
-          }
-          return item;
-        });
-      } else {
-        transactionbymonth.push({
-          id: dataset.store_id,
-          name: dataset.store_location,
-          date: {
-            [dataset.transaction_date.split("/")[0]]: 1,
-          },
-        });
-      }
-    }
-
-    for (let index = 0; index < totalstoretransactions.length; index++) {
-      const totalstoretransaction = totalstoretransactions[index];
-      document.querySelector("#sold-quantity").innerHTML += `
-      <tr>
-      <td>
-      ${totalstoretransaction.name}
-      </td>
-      <td>
-      ${totalstoretransaction.value}
-      </td>
-      </tr>`;
-
-      tablefoot += totalstoretransaction.value;
-    }
-    document.querySelector("#totalrevenue").innerHTML =
-      "$" + totalrevenue.toFixed(2);
-    document.querySelector("#totaltransaction").innerHTML = totaltransactions;
-    document.querySelector("#percent").innerHTML = getdatabypercent(
-      percent,
-      totalrevenue
-    );
-
-    document.querySelector("#tablefoot").innerHTML = `
-  <tr>
-  <td>
-  total
-  </td>
-  <td>
-  ${tablefoot}
-  </td>
-  </tr>`;
-    console.log(totalstoretransactions);
-  });
+let buttonfilter = document.querySelector(".storefilter");
+buttonfilter.addEventListener("change", (event) => {
+  
+  filter();
 });
 
-document.addEventListener("DOMContentLoaded", (event) => {
-  const buttons = document.querySelectorAll(".select");
-
-
-
+monthfilter.addEventListener("change", (event) => {
   
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      button.classList.toggle("active");
+  filter();
+});
+
+categoryfilter.addEventListener("change", (event) => {
+  
+  filter();
+});
+
+let clearfilter = document.querySelector(".clear-btn");
+clearfilter.addEventListener("click", (event) => {
+  buttonfilter.value = "All Store";
+  monthfilter.value = "All Months";
+  categoryfilter.value="All Category";
+  filter()
+});
+
+function filter() {
+  let storefiltervalue = buttonfilter.value;
+  let rows = datasets;
+  let categoriesfilter = categoryfilter.value;
+  let monthsfilter = monthfilter.value
+
+  if (storefiltervalue != "All Store"&&categoriesfilter!="All Category"&&monthsfilter!="All Months") {
+    rows = datasets.filter((item) => {
+      
+      return item.store_location === storefiltervalue&&item.transaction_date.split("/")[0] === monthsfilter&&item.product_category === categoriesfilter
+    
     });
-  });
-}); */
+  } else if(storefiltervalue != "All Store"&&categoriesfilter!="All Category"&&monthsfilter==="All Months"){
+    rows = datasets.filter((item) => {
+      
+      return item.store_location === storefiltervalue&&item.product_category === categoriesfilter
+    
+    });
+  } else if(storefiltervalue != "All Store"&&categoriesfilter==="All Category"&&monthsfilter!="All Months"){
+    rows = datasets.filter((item) => {
+      
+      return item.store_location === storefiltervalue&&item.transaction_date.split("/")[0] === monthsfilter
+    
+    });
+    
+
+  } else if (storefiltervalue === "All Store"&&categoriesfilter!="All Category"&&monthsfilter!="All Months"){
+    rows = datasets.filter((item) => {
+      
+      return item.transaction_date.split("/")[0] === monthsfilter&&item.product_category === categoriesfilter
+    
+    });
+  }
+  let totaltransactions = 0;
+  let totalrevenue = 0;
+  let tablefoot = 0;
+
+  // Initialize arrays to store various transaction data
+  let transactionbyeachday = [];
+  let transactionbyhour = [];
+  let producttransaction = [];
+  let transactionbymonth = [];
+  let percent = [];
+  let totalstoretransactions = [];
+
+  // Loop through each dataset entry
+  for (let index = 0; index < rows.length; index++) {
+    const dataset = rows[index];
+
+    if (percent.filter((item) => item.id === dataset.store_id).length > 0) {
+      percent = percent.map((item) => {
+        if (item.id === dataset.store_id) {
+          return {
+            ...item,
+            value: item.value + dataset.unit_price * dataset.transaction_qty,
+          };
+        }
+        return item;
+      });
+    } else {
+      percent.push({
+        name: dataset.store_location,
+        id: dataset.store_id,
+        value: dataset.unit_price * dataset.transaction_qty,
+      });
+    }
+
+    if (
+      totalstoretransactions.filter((item) => item.id === dataset.store_id)
+        .length > 0
+    ) {
+      totalstoretransactions = totalstoretransactions.map((item) => {
+        if (item.id === dataset.store_id) {
+          return { ...item, value: item.value + dataset.transaction_qty };
+        }
+        return item;
+      });
+    } else {
+      totalstoretransactions.push({
+        name: dataset.store_location,
+        id: dataset.store_id,
+        value: dataset.transaction_qty,
+      });
+    }
+
+    // Calculate total revenue and transactions
+    totalrevenue += dataset.unit_price * dataset.transaction_qty;
+    totaltransactions += 1;
+
+    // Update transaction data by hour for each store
+    if (
+      transactionbyhour.filter((item) => item.id === dataset.store_id).length >
+      0
+    ) {
+      transactionbyhour = transactionbyhour.map((item) => {
+        if (item.id === dataset.store_id) {
+          return {
+            ...item,
+            hours: {
+              ...item.hours,
+              [dataset.transaction_time.split(":")[0]]: item.hours[
+                dataset.transaction_time.split(":")[0]
+              ]
+                ? item.hours[dataset.transaction_time.split(":")[0]] + 1
+                : 1,
+            },
+          };
+        }
+        return item;
+      });
+    } else {
+      transactionbyhour.push({
+        id: dataset.store_id,
+        name: dataset.store_location,
+        hours: {
+          [dataset.transaction_time.split(":")[0]]: 1,
+        },
+      });
+    }
+
+    // Update transaction data by day for each store
+    let store = transactionbyeachday.filter(
+      (item) => item.id === dataset.store_id
+    );
+    if (store.length > 0) {
+      if (store[0].days[new Date(dataset.transaction_date).getDay()]) {
+        transactionbyeachday = transactionbyeachday.map((item) => {
+          if (item.id === dataset.store_id) {
+            return {
+              ...item,
+              days: {
+                ...item.days,
+                [new Date(dataset.transaction_date).getDay()]:
+                  item.days[new Date(dataset.transaction_date).getDay()] +
+                  dataset.unit_price * dataset.transaction_qty,
+              },
+            };
+          }
+          return item;
+        });
+      } else {
+        transactionbyeachday = transactionbyeachday.map((item) => {
+          if (item.id === dataset.store_id) {
+            return {
+              ...item,
+              days: {
+                ...item.days,
+                [new Date(dataset.transaction_date).getDay()]:
+                  dataset.unit_price * dataset.transaction_qty,
+              },
+            };
+          }
+          return item;
+        });
+      }
+    } else {
+      transactionbyeachday.push({
+        id: dataset.store_id,
+        name: dataset.store_location,
+        days: {
+          [new Date(dataset.transaction_date).getDay()]:
+            dataset.unit_price * dataset.transaction_qty,
+        },
+      });
+    }
+
+    // Update product transaction data by category for each store
+    if (
+      producttransaction.filter((item) => item.id === dataset.store_id).length >
+      0
+    ) {
+      producttransaction = producttransaction.map((item) => {
+        if (item.id === dataset.store_id) {
+          return {
+            ...item,
+            categories: {
+              ...item.categories,
+              [dataset.product_category]: item.categories[
+                dataset.product_category
+              ]
+                ? item.categories[dataset.product_category] + 1
+                : 1,
+            },
+          };
+        }
+        return item;
+      });
+    } else {
+      producttransaction.push({
+        id: dataset.store_id,
+        name: dataset.store_location,
+        categories: {
+          [dataset.product_category]: 1,
+        },
+      });
+    }
+    if (
+      transactionbymonth.filter((item) => item.id === dataset.store_id).length >
+      0
+    ) {
+      transactionbymonth = transactionbymonth.map((item) => {
+        if (item.id === dataset.store_id) {
+          return {
+            ...item,
+            date: {
+              ...item.date,
+              [dataset.transaction_date.split("/")[0]]: item.date[
+                dataset.transaction_date.split("/")[0]
+              ]
+                ? item.date[dataset.transaction_date.split("/")[0]] + 1
+                : 1,
+            },
+          };
+        }
+        return item;
+      });
+    } else {
+      transactionbymonth.push({
+        id: dataset.store_id,
+        name: dataset.store_location,
+        date: {
+          [dataset.transaction_date.split("/")[0]]: 1,
+        },
+      });
+    }
+  }
+  document.querySelector("#sold-quantity").innerHTML = "";
+  for (let index = 0; index < totalstoretransactions.length; index++) {
+    const totalstoretransaction = totalstoretransactions[index];
+    document.querySelector("#sold-quantity").innerHTML += `
+    <tr>
+    <td>
+    ${totalstoretransaction.name}
+    </td>
+    <td>
+    ${totalstoretransaction.value}
+    </td>
+    </tr>`;
+
+    tablefoot += totalstoretransaction.value;
+  }
+  document.querySelector("#totalrevenue").innerHTML =
+    "$" + totalrevenue.toFixed(2);
+  document.querySelector("#totaltransaction").innerHTML = totaltransactions;
+  document.querySelector("#percent").innerHTML = getdatabypercent(
+    percent,
+    totalrevenue
+  );
+
+  document.querySelector("#tablefoot").innerHTML = `
+<tr>
+<td>
+total
+</td>
+<td>
+${tablefoot}
+</td>
+</tr>`;
+  transaction_by_each_day.data.datasets =
+    getdatabytransactionbyeachday(transactionbyeachday);
+  transaction_by_each_day.update();
+  transaction_by_hour_chart.data.datasets =
+    getdatabytransactionbyhour(transactionbyhour);
+  transaction_by_hour_chart.update();
+  transaction_by_month_chart.data.datasets =
+    getdatabytransactionbymonth(transactionbymonth);
+  transaction_by_month_chart.update();
+  store_location_revenue_chart.data.datasets = getdatabytotalrevenuepercent(
+    percent,
+    totalrevenue
+  );
+  store_location_revenue_chart.update();
+  Product_Transaction_by_Store_chart.data.datasets =
+    getdatabyproducttransaction(producttransaction);
+  Product_Transaction_by_Store_chart.update();
+  table.clear();
+  table.rows.add(rows);
+  table.draw();
+}
