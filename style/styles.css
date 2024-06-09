@@ -220,15 +220,7 @@ body {
   object-fit: cover;
 }
 
-/* Improved h2 styling */
-.titledatasets {
-  font-size: 2em;
-  color: var(--brown);
-  margin: 20px 0;
-  padding: 10px;
-  border-bottom: 2px solid var(--grey);
-  text-align: center;
-}
+
 
 /* Card box styling */
 .cardBox {
@@ -320,6 +312,19 @@ body {
   height: auto;
 }
 
+/* Improved h2 styling */
+.titlechart {
+  font-size: 1.25em;
+  color: var(--brown);
+  margin: 20px 0;
+  padding: 10px;
+  border-bottom: 2px solid var(--grey);
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 #col-7 table {
   width: 100%;
   border-collapse: collapse;
@@ -392,6 +397,8 @@ body {
   height: 4.8em;
   margin: auto;
   padding: 1em;
+  margin-bottom: 100px;
+  
 }
 
 .selector .dropdown {
@@ -427,7 +434,6 @@ body {
   font-weight: bold;
   margin-bottom: 5px;
   color: var(--white);
-  margin-bottom: px;
 }
 
 /* .buttons {
@@ -460,51 +466,64 @@ body {
 }
 
 /*DataTable styling */
-#myTable {
-  width: 100% !important;
-  font-size: 14px;
-  background-color: white;
-  padding: 2em;
-  margin-top: 2px;
-  border-radius: 2em;
-  box-shadow: rgba(69, 76, 94, 0.08) 0px 0px 34px -1px;
+/* Improved h2 styling */
+.titledatasets {
+  font-size: 2em;
+  color: var(--brown);
+  margin: 10px 0;
+  padding: 10px;
+  border-bottom: 2px solid var(--grey);
+  text-align: center;
 }
 
-#myTable thead,
-#myTable tfoot {
+.Table {
+  width: 100% !important;
+  font-size: 14px bold;
+  background-color: white;
+  padding: 0.75em;
+  margin: 4px 4px 0px 0px;
+  border-radius: 2em;
+  /* box-shadow: rgba(69, 76, 94, 0.08) 0px 0px 34px -1px; */
+  box-shadow: 5px 5px 25px 0px rgba(0, 60, 37, 0.3);
+  
+}
+
+
+.Table thead,
+.Table tfoot {
   background-color: #f2f2f2;
 }
 
-#myTable th,
-#myTable td {
+.Table th,
+.Table td {
   padding: 10px;
   text-align: left;
   border: 1px solid #ddd;
 }
 
-#myTable th {
+.Table th {
   background-color: #af8f6f;
   color: white;
 }
 
 /* Alternating Datables row colors */
-#myTable tbody tr:nth-child(odd) {
+.Table tbody tr:nth-child(odd) {
   background-color: #d3d3d3;
 }
 
-#myTable tbody tr:nth-child(even) {
+.Table tbody tr:nth-child(even) {
   background-color: white;
 }
 
-#myTable tbody tr:hover {
+.Table tbody tr:hover {
   background-color: #f1f1f1;
 }
 
-#myTable tbody tr.selected {
+.Table tbody tr.selected {
   background-color: #e0e0e0;
 }
 
-#myTable td:focus {
+.Table td:focus {
   outline: none;
 }
 
@@ -522,18 +541,7 @@ body {
   color: var(--white);
 }
 
-/* Improved h2 styling */
-.titlechart {
-  font-size: 1.25em;
-  color: var(--brown);
-  margin: 20px 0;
-  padding: 10px;
-  border-bottom: 2px solid var(--grey);
-  text-align: center;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
+
 
 /* Team Section */
 .team {
@@ -551,7 +559,8 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 3rem;
+  margin-top: 10px;
+  
 }
 .team-content {
   width: 100%;
