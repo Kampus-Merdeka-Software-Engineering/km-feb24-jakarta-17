@@ -8,8 +8,8 @@
     <link rel="stylesheet" type="text/css" href="./style/styles.css" />
     <link
       rel="stylesheet"
-      href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css"
       type="text/css"
+      href="https://cdn.datatables.net/v/dt/dt-2.0.8/af-2.7.0/b-3.0.2/b-html5-3.0.2/fc-5.0.1/kt-2.12.1/r-3.0.2/rr-1.5.0/datatables.min.css"
     />
   </head>
   <body>
@@ -50,14 +50,14 @@
             </a>
           </li>
 
-          <li>
+          <!-- <li>
             <a href="#">
               <span class="icon"
                 ><ion-icon name="log-out-outline"></ion-icon
               ></span>
               <span class="title">Log Out</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -69,12 +69,12 @@
           <ion-icon name="menu-outline"></ion-icon>
         </div>
         <!-- Search -->
-        <div class="search">
+        <!-- <div class="search">
           <label>
             <input type="text" placeholder="Search here" />
             <ion-icon name="search-outline"></ion-icon>
           </label>
-        </div>
+        </div> -->
         <!-- userImg -->
         <div class="user">
           <img src="images/logo_team17.png" />
@@ -161,31 +161,32 @@
       <!--selector and dropdown list-->
       <div class="selector">
         <!-- <div class="bottom-selector"> -->
-          <div class="dropdown" id="selector-1">
-            <!--month dropdown-->
-            <label for="month-filter">Month</label>
-            <select id="monthfilter" class="monthfilter">
-              <option value="All Months">All Months</option>
-              <option value="1">January</option>
-              <option value="2">February</option>
-              <option value="3">March</option>
-              <option value="4">April</option>
-              <option value="5">May</option>
-              <option value="6">June</option>
-            </select>
-          </div>
-          <div class="dropdown" id="selector-2">
-            <!--store dropdown-->
-            <label for="store-filter">Store Location</label>
-            <select id="storefilter" class="storefilter">
-              <option value="All Store">All Store</option>
-              <option value="Lower Manhattan">Lower Manhattan</option>
-              <option value="Astoria">Astoria</option>
-              <option value="Hell's Kitchen">Hell's Kitchen</option>
-            </select>
-          </div>
-          <!-- hours selector (still progress) -->
-          <!-- <div class="hours" id="selector-3">
+        <div class="dropdown" id="selector-1">
+          <!--month dropdown-->
+          <label for="month-filter">Month</label>
+          <select id="monthfilter" class="monthfilter">
+            <option value="All Months">All Months</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+          </select>
+        </div>
+        <div class="dropdown" id="selector-2">
+          <!--store dropdown-->
+          <label for="store-filter">Store Location</label>
+          <select id="storefilter" class="storefilter">
+            <option value="All Store">All Store</option>
+            <option value="Lower Manhattan">Lower Manhattan</option>
+            <option value="Astoria">Astoria</option>
+            <option value="Hell's Kitchen">Hell's Kitchen</option>
+          </select>
+        </div>
+        <!--  future Development -->
+        <!-- hours selector (still progress) -->
+        <!-- <div class="hours" id="selector-3">
             <label for="hourRange">Filter Hours:</label>
             <input
               type="range"
@@ -202,7 +203,7 @@
         <div class="dropdown" id="selector-4">
           <label for="filter-categories">Product Category</label>
           <select class="filter-categories" id="filter-categories">
-            <option value="All Category">All</option>
+            <option value="All Category">All Category</option>
             <option value="Tea">Tea</option>
             <option value="Drinking Chocolate">Drinking Chocolate</option>
             <option value="Coffee">Coffee</option>
@@ -212,7 +213,6 @@
         </div>
         <!-- clear button -->
         <div class="clear" id="selector-5">
-          <h3>Clear</h3>
           <button id="clearfilter" class="clear-btn">
             <ion-icon name="trash-outline"></ion-icon>
           </button>
@@ -239,6 +239,7 @@
             </tr>
           </thead>
           <tbody id="datasets"></tbody>
+          <!-- Datatables di isi mengunnakan JS -->
         </table>
       </div>
 
@@ -248,6 +249,7 @@
           <h1>Team 17 Jakarta</h1>
         </div>
 
+        <div data-aos="zoom-in"></div>
         <div class="team-content">
           <div class="box">
             <img src="images/alip.png" />
@@ -276,7 +278,7 @@
 
         <div class="team-content">
           <div class="box">
-            <img src="images/zaqi.png">
+            <img src="images/zaqi.png" />
             <h3>Muhammad Abduh Rozaqi</h3>
             <h5>Front End Engineer</h5>
           </div>
@@ -302,7 +304,7 @@
 
         <div class="team-content">
           <div class="box">
-            <img src="images/nindri.png">
+            <img src="images/nindri.png" />
             <h3>Nindri Lia Desmita</h3>
             <h5>Pitch Deck Team</h5>
           </div>
@@ -326,6 +328,9 @@
           </div>
         </div>
       </section>
+      <footer class="footer">
+        <p>© This website is managed by Team 17 Jakarta</p>
+      </footer>
     </div>
 
     <!-- Icon source-->
@@ -349,7 +354,8 @@
       integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
       crossorigin="anonymous"
     ></script>
-    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/dt-2.0.8/af-2.7.0/b-3.0.2/b-html5-3.0.2/fc-5.0.1/kt-2.12.1/r-3.0.2/rr-1.5.0/datatables.min.js"></script>
+
     <!-- Charts Source -->
     <script src="./script/charts.js" type="module"></script>
     <!--Script-->

@@ -280,11 +280,11 @@ function getdatabytransactionbyeachday(items) {
       const day = j;
       data.push(item.days[day] ? item.days[day] : 0);
       if (item.name === "Astoria") {
-        backgroundColor.push("#1b2b3b");
+        backgroundColor.push("#DCD7C9");
       } else if (item.name === "Hell's Kitchen") {
-        backgroundColor.push("#344e60");
+        backgroundColor.push("#A27B5C");
       } else if (item.name === "Lower Manhattan") {
-        backgroundColor.push("#a8948a");
+        backgroundColor.push("#3F4E4F");
       }
     }
     result.push({
@@ -328,11 +328,11 @@ function getdatabytransactionbyhour(items) {
     for (let j = 7; j < 21; j++) {
       data.push(item.hours[j] ? item.hours[j] : 0);
       if (item.name === "Astoria") {
-        backgroundColor.push("#1b2b3b");
+        backgroundColor.push("#DCD7C9");
       } else if (item.name === "Hell's Kitchen") {
-        backgroundColor.push("#344e60");
+        backgroundColor.push("#A27B5C");
       } else if (item.name === "Lower Manhattan") {
-        backgroundColor.push("#a8948a");
+        backgroundColor.push("#3F4E4F");
       }
     }
     hasil.push({
@@ -391,11 +391,11 @@ function getdatabytransactionbymonth(items) {
     for (let j = 1; j < 7; j++) {
       data.push(item.date[j] ? item.date[j] : 0);
       if (item.name === "Astoria") {
-        backgroundColor.push("#1b2b3b");
+        backgroundColor.push("#DCD7C9");
       } else if (item.name === "Hell's Kitchen") {
-        backgroundColor.push("#344e60");
+        backgroundColor.push("#A27B5C");
       } else if (item.name === "Lower Manhattan") {
-        backgroundColor.push("#a8948a");
+        backgroundColor.push("#3F4E4F");
       }
     }
     hasil.push({
@@ -433,11 +433,11 @@ function getdatabytotalrevenuepercent(items, totalrevenue) {
     const item = items[index];
     let backgroundColor = "";
     if (item.name === "Astoria") {
-      backgroundColor = "#1b2b3b";
+      backgroundColor = "#DCD7C9";
     } else if (item.name === "Lower Manhattan") {
-      backgroundColor = "#344e60";
+      backgroundColor = "#A27B5C";
     } else if (item.name === "Hell's Kitchen") {
-      backgroundColor = "#a8948a";
+      backgroundColor = "#3F4E4F";
     }
     totalrevenuepercent.push({
       label: item.name,
@@ -471,7 +471,7 @@ function getdatabyproducttransaction(items) {
   let hasil = [];
   let total = {
     label: "Total",
-    backgroundColor: "blue",
+    backgroundColor: "lightgrey",
     data: [],
   };
   console.log(items);
@@ -502,11 +502,11 @@ function getdatabyproducttransaction(items) {
     }
     let backgroundColor = "";
     if (item.name === "Astoria") {
-      backgroundColor = "#1b2b3b";
+      backgroundColor = "#DCD7C9";
     } else if (item.name === "Lower Manhattan") {
-      backgroundColor = "#344e60";
+      backgroundColor = "#A27B5C";
     } else if (item.name === "Hell's Kitchen") {
-      backgroundColor = "#a8948a";
+      backgroundColor = "#3F4E4F";
     }
     hasil.push({
       label: item.name,
@@ -559,7 +559,7 @@ const Product_Transaction_by_Store_chart = createChart(
   "Product-Transaction-by-Store-chart",
   "bar"
 );
-
+// future Development :
 // Create the "Revenue by Weekday/Weekend" chart
 /* const Revenue_by_Weekday_Weekend_chart = createChart(
   ["Weekday", "Weekend"],
