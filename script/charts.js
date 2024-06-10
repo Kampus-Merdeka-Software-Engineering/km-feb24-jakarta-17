@@ -607,20 +607,16 @@ let table = new DataTable("#myTable", {
 let monthfilter = document.querySelector(".monthfilter");
 let categoryfilter = document.querySelector(".filter-categories");
 
-
 let buttonfilter = document.querySelector(".storefilter");
 buttonfilter.addEventListener("change", (event) => {
-  
   filter();
 });
 
 monthfilter.addEventListener("change", (event) => {
-  
   filter();
 });
 
 categoryfilter.addEventListener("change", (event) => {
-  
   filter();
 });
 
@@ -628,43 +624,87 @@ let clearfilter = document.querySelector(".clear-btn");
 clearfilter.addEventListener("click", (event) => {
   buttonfilter.value = "All Store";
   monthfilter.value = "All Months";
-  categoryfilter.value="All Category";
-  filter()
+  categoryfilter.value = "All Category";
+  filter();
 });
 
 function filter() {
   let storefiltervalue = buttonfilter.value;
   let rows = datasets;
   let categoriesfilter = categoryfilter.value;
-  let monthsfilter = monthfilter.value
+  let monthsfilter = monthfilter.value;
 
-  if (storefiltervalue != "All Store"&&categoriesfilter!="All Category"&&monthsfilter!="All Months") {
+  if (
+    storefiltervalue != "All Store" &&
+    categoriesfilter != "All Category" &&
+    monthsfilter != "All Months"
+  ) {
     rows = datasets.filter((item) => {
-      
-      return item.store_location === storefiltervalue&&item.transaction_date.split("/")[0] === monthsfilter&&item.product_category === categoriesfilter
-    
+      return (
+        item.store_location === storefiltervalue &&
+        item.transaction_date.split("/")[0] === monthsfilter &&
+        item.product_category === categoriesfilter
+      );
     });
-  } else if(storefiltervalue != "All Store"&&categoriesfilter!="All Category"&&monthsfilter==="All Months"){
+  } else if (
+    storefiltervalue != "All Store" &&
+    categoriesfilter != "All Category" &&
+    monthsfilter === "All Months"
+  ) {
     rows = datasets.filter((item) => {
-      
-      return item.store_location === storefiltervalue&&item.product_category === categoriesfilter
-    
+      return (
+        item.store_location === storefiltervalue &&
+        item.product_category === categoriesfilter
+      );
     });
-  } else if(storefiltervalue != "All Store"&&categoriesfilter==="All Category"&&monthsfilter!="All Months"){
+  } else if (
+    storefiltervalue != "All Store" &&
+    categoriesfilter === "All Category" &&
+    monthsfilter != "All Months"
+  ) {
     rows = datasets.filter((item) => {
-      
-      return item.store_location === storefiltervalue&&item.transaction_date.split("/")[0] === monthsfilter
-    
+      return (
+        item.store_location === storefiltervalue &&
+        item.transaction_date.split("/")[0] === monthsfilter
+      );
     });
-    
-
-  } else if (storefiltervalue === "All Store"&&categoriesfilter!="All Category"&&monthsfilter!="All Months"){
+  } else if (
+    storefiltervalue === "All Store" &&
+    categoriesfilter != "All Category" &&
+    monthsfilter != "All Months"
+  ) {
     rows = datasets.filter((item) => {
-      
-      return item.transaction_date.split("/")[0] === monthsfilter&&item.product_category === categoriesfilter
-    
+      return (
+        item.transaction_date.split("/")[0] === monthsfilter &&
+        item.product_category === categoriesfilter
+      );
+    });
+  } else if (
+    storefiltervalue !== "All Store" &&
+    categoriesfilter === "All Category" &&
+    monthsfilter === "All Months"
+  ) {
+    rows = datasets.filter((item) => {
+      return item.store_location === storefiltervalue;
+    });
+  } else if (
+    storefiltervalue === "All Store" &&
+    categoriesfilter !== "All Category" &&
+    monthsfilter === "All Months"
+  ) {
+    rows = datasets.filter((item) => {
+      return item.product_category === categoriesfilter;
+    });
+  } else if (
+    storefiltervalue === "All Store" &&
+    categoriesfilter === "All Category" &&
+    monthsfilter !== "All Months"
+  ) {
+    rows = datasets.filter((items) => {
+      return items.transaction_date.split("/")[0] === monthsfilter;
     });
   }
+
   let totaltransactions = 0;
   let totalrevenue = 0;
   let tablefoot = 0;
