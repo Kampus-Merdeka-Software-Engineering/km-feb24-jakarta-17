@@ -432,9 +432,9 @@ body {
   width: 200px;
 }
 
-.selector label {
+.selector span {
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   color: var(--white);
 }
 
@@ -615,7 +615,7 @@ dt-search {
 }
 
 /* Responsive Adjustment */
-@media (min-width: 901px) and (max-width: 1200px) {
+@media (min-width: 900px) and (max-width: 1200px) {
   .cardBox {
     grid-template-areas:
       "card-1"
