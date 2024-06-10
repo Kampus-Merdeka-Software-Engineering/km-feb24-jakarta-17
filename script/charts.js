@@ -320,7 +320,6 @@ const transaction_by_each_day = createChart(
 // Prepare data for the "Transaction by Hour" chart
 function getdatabytransactionbyhour(items) {
   let hasil = [];
-  console.log(items);
   for (let index = 0; index < items.length; index++) {
     const item = items[index];
     let data = [];
@@ -474,7 +473,6 @@ function getdatabyproducttransaction(items) {
     backgroundColor: "lightgrey",
     data: [],
   };
-  console.log(items);
   for (let index = 0; index < items.length; index++) {
     const item = items[index];
     let data = [];
@@ -514,7 +512,6 @@ function getdatabyproducttransaction(items) {
       backgroundColor: backgroundColor,
     });
   }
-  console.log(hasil);
   hasil.push(total);
   return hasil;
 }
