@@ -178,35 +178,6 @@ body {
   cursor: pointer;
 }
 
-/* .search {
-  position: relative;
-  width: 400px;
-  margin: 0 10px;
-}
-
-.search label {
-  position: relative;
-  width: 100%;
-}
-
-.search label input {
-  width: 100%;
-  height: 40px;
-  border-radius: 40px;
-  padding: 5px 20px;
-  padding-left: 35px;
-  font-size: 18px;
-  outline: none;
-  border: 1px solid var(--black2);
-}
-
-.search label ion-icon {
-  position: absolute;
-  top: 0;
-  left: 10px;
-  font-size: 1.2em;
-} */
-
 .user {
   position: relative;
   width: 40px;
@@ -438,19 +409,6 @@ body {
   color: var(--white);
 }
 
-/* .buttons {
-  display: flex;
-}
-
-.buttons button {
-  background-color: #e9ecef;
-  border: none;
-  padding: 10px 20px;
-  margin: auto;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-} */
 
 /* Clear button styling */
 .clear-btn {
