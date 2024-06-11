@@ -190,23 +190,6 @@ for (let index = 0; index < datasets.length; index++) {
       },
     });
   }
-
-  // Append dataset entry to HTML table
-  /* document.querySelector("#datasets").innerHTML += `
-  <tr>
-    <td>${dataset.transaction_id}</td>
-    <td>${dataset.transaction_date}</td>
-    <td>${dataset.transaction_time}</td>
-    <td>${dataset.transaction_qty}</td>
-    <td>${dataset.store_id}</td>
-    <td>${dataset.store_location}</td>
-    <td>${dataset.product_id}</td>
-    <td>${dataset.unit_price}</td>
-    <td>${dataset.product_category}</td>
-    <td>${dataset.product_type}</td>
-    <td>${dataset.product_detail}</td>
-  </tr>
-  `; */
 }
 
 for (let index = 0; index < totalstoretransactions.length; index++) {
@@ -556,33 +539,6 @@ const Product_Transaction_by_Store_chart = createChart(
   "Product-Transaction-by-Store-chart",
   "bar"
 );
-// future Development :
-// Create the "Revenue by Weekday/Weekend" chart
-/* const Revenue_by_Weekday_Weekend_chart = createChart(
-  ["Weekday", "Weekend"],
-  [
-    {
-      label: "Revenue",
-      data: [1000, 250],
-      backgroundColor: ["blue", "skyblue"],
-    },
-  ],
-  {
-    plugins: {
-      legend: {
-        position: "bottom",
-        labels: {
-          font: {
-            size: 16,
-            family: "Ubuntu",
-          },
-        },
-      },
-    },
-  },
-  "Revenue-by-Weekday/Weekend-chart",
-  "pie"
-); */
 
 // Initialize DataTable for the HTML table
 let table = new DataTable("#myTable", {
